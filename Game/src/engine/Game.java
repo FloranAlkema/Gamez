@@ -4,7 +4,7 @@ import engine.graphics.Screen;
 import engine.input.Keyboard;
 import engine.input.Mouse;
 import engine.scene.Scene;
-import engine.scene.entity.FloranEntity;
+import engine.scene.entity.Player;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -50,7 +50,7 @@ public class Game extends JFrame implements Runnable {
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 		screen = new Screen();
 
-		scene.addEntity(new FloranEntity());
+		scene.addEntity(new Player());
 
 		setVisible(true);
 	}
