@@ -1,8 +1,7 @@
-package script.scene.entity;
+package engine.scene.entity;
 
 import engine.Game;
 import engine.graphics.Sprite;
-import engine.scene.entity.Entity;
 
 public class FloranEntity extends Entity {
 	private final Sprite sprite;

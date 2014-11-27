@@ -4,6 +4,7 @@ import engine.graphics.Screen;
 import engine.input.Keyboard;
 import engine.input.Mouse;
 import engine.scene.Scene;
+import engine.scene.entity.FloranEntity;
 
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -14,8 +15,6 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-
-import script.scene.entity.FloranEntity;
 
 public class Game extends JFrame implements Runnable {
 	public static final int WIDTH = 720;
