@@ -123,8 +123,8 @@ public class Game extends JFrame implements Runnable {
 			}
 
 			if (System.currentTimeMillis() - system > 1000) {
-				System.out.println(String.format(
-						"[Game] - updates: %s, frames: %s", updates, frames));
+				//System.out.println(String.format(
+				//		"[Game] - updates: %s, frames: %s", updates, frames));
 				updates = 0;
 				frames = 0;
 				system += 1000;

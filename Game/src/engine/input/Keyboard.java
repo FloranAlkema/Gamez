@@ -20,28 +20,40 @@ public class Keyboard implements KeyListener {
 	@Override
 	public void keyPressed(final KeyEvent e) {
 		down[e.getKeyCode()] = true;
-		if (e.equals(KeyEvent.VK_A)) {
+		System.out.println(e.getKeyCode());
+		if (down[65]) {
 			Player.left(true);
-		} else if (e.equals(KeyEvent.VK_W)) {
-
-		} else if (e.equals(KeyEvent.VK_D)) {
-
-		} else if (e.equals(KeyEvent.VK_S)) {
-
+			System.out.println("left");
+		} else if (down[87]) {
+			Player.up(true);
+			System.out.println("up");
+		} else if (down[83]) {
+			Player.down(true);
+			System.out.println("down");
+		} else if (down[68]) {
+			Player.right(true);
+			System.out.println("right");
 		}
 	}
 
 	@Override
 	public void keyReleased(final KeyEvent e) {
 		down[e.getKeyCode()] = false;
-		if (e.equals(KeyEvent.VK_A)) {
+		if (!down[65]) {
 			Player.left(false);
-		} else if (e.equals(KeyEvent.VK_W)) {
-
-		} else if (e.equals(KeyEvent.VK_D)) {
-
-		} else if (e.equals(KeyEvent.VK_S)) {
-
+			System.out.println("not left");
+		} 
+		if (!down[87]) {
+			Player.up(false);
+			System.out.println("not up");
+		}
+		if (!down[83]) {
+			Player.down(false);
+			System.out.println("not down");
+		} 
+		if (!down[68]) {
+			Player.right(false);
+			System.out.println("not right");
 		}
 	}
 
