@@ -1,13 +1,6 @@
 package engine;
 
-import engine.graphics.Screen;
-import engine.input.Keyboard;
-import engine.input.Mouse;
-import engine.scene.Scene;
-import engine.scene.entity.Player;
-
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -15,6 +8,13 @@ import java.util.Arrays;
 
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+
+import engine.graphics.Screen;
+import engine.input.Keyboard;
+import engine.input.Mouse;
+import engine.scene.Scene;
+import engine.scene.entity.Ground;
+import engine.scene.entity.Player;
 
 public class Game extends JFrame implements Runnable {
 	public static final int WIDTH = 720;
@@ -51,6 +51,7 @@ public class Game extends JFrame implements Runnable {
 		screen = new Screen();
 
 		scene.addEntity(new Player());
+		scene.addEntity(new Ground(0,400));
 
 		setVisible(true);
 	}
