@@ -7,6 +7,8 @@ import engine.input.*;
 public class Player extends Entity {
 	private final Sprite sprite;
 	static boolean left, right, down, up;
+	static boolean sprint;
+	int boost;
 
 	public static void left(boolean val) {
 		left = val;
@@ -27,19 +29,28 @@ public class Player extends Entity {
 		right = val;
 		// System.out.println("right val: " + right);
 	}
+	
+	public static void sprint(boolean val) {
+		sprint = val;
+	}
 
 	public void move(){
 		if (left && right) {
 		//stand still
 		}else if(right){
-			x++;
+			x = x+1 + boost;
 		}else if(left){
-			x--;
+			x = x-1 - boost;
 		}
 		if(down){
 			y++;
 		}else if(up){
 			y--;
+		}
+		if(sprint){
+			boost = 1;
+		} else{
+			boost = 0;
 		}
 	}
 
