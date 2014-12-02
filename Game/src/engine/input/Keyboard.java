@@ -24,13 +24,16 @@ public class Keyboard implements KeyListener {
 		if (down[65]) {
 			Player.left(true);
 			//System.out.println("left");
-		} else if (down[87]) {
+		}
+		if (down[87]) {
 			Player.up(true);
 			//System.out.println("up");
-		} else if (down[83]) {
+		}
+		if (down[83]) {
 			Player.down(true);
 			//System.out.println("down");
-		} else if (down[68]) {
+		}
+		if (down[68]) {
 			Player.right(true);
 			//System.out.println("right");
 		}
