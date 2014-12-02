@@ -19,6 +19,7 @@ public class Sprite {
 		pixels = image.getRGB(0, 0, width, height, null, 0, width);
 	}
 	
+	
 	static {
 		cache = new HashMap<String, Sprite>();
 	}
@@ -38,6 +39,8 @@ public class Sprite {
  
         return null;
     }
+	
+	
 	
 	/**
 	 * This method returns an image in the cache, if not found, it will load it

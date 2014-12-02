@@ -1,7 +1,5 @@
 package engine.scene.entity;
 
-import java.awt.Rectangle;
-
 import engine.Game;
 import engine.graphics.Sprite;
 
@@ -25,15 +23,15 @@ public class Ground extends Entity{
 		this.y = newy;
 	}
 	
-	 public Rectangle getBounds() {
+	/* public Rectangle getBounds() {
 	        return new Rectangle(x, y, sprite.width, sprite.height);
 	    }
 	 
 		public void checkCollisions(){
 		Rectangle rect = this.getBounds();
-		Rectangle player = Player.
+		Rectangle player = Player.getBounds();
 		}
-	
+	*/
 	
 	@Override
 	public void update(final Game game) {

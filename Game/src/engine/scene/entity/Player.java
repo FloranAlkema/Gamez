@@ -1,15 +1,17 @@
 package engine.scene.entity;
 
+import java.awt.Rectangle;
+
 import engine.Game;
 import engine.graphics.Sprite;
-import engine.input.*;
 
 public class Player extends Entity {
 	private final Sprite sprite;
 	static boolean left, right, down, up;
 	static boolean sprint;
 	int boost;
-
+	//static int width = sprite.width;
+	static int height;
 	public static void left(boolean val) {
 		left = val;
 		// System.out.println("left val: " + left);
@@ -33,6 +35,9 @@ public class Player extends Entity {
 	public static void sprint(boolean val) {
 		sprint = val;
 	}
+	public Rectangle getBounds() {
+        return new Rectangle(x, y, sprite.width, sprite.height);
+    }
 
 	public void move(){
 		if (left && right) {
