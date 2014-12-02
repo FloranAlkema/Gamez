@@ -37,6 +37,9 @@ public class Keyboard implements KeyListener {
 			Player.right(true);
 			//System.out.println("right");
 		}
+		if (down[16]){
+			Player.sprint(true);
+		}
 	}
 
 	@Override
@@ -57,6 +60,9 @@ public class Keyboard implements KeyListener {
 		if (!down[68]) {
 			Player.right(false);
 			//System.out.println("not right");
+		}
+		if (!down[16]) {
+			Player.sprint(false);
 		}
 	}
 
