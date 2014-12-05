@@ -10,8 +10,9 @@ public class Player extends Entity {
 	static boolean left, right, down, up;
 	static boolean sprint;
 	int boost;
-	//static int width = sprite.width;
-	static int height;
+
+	// static int width = sprite.width;
+	// static int height;
 	public static void left(boolean val) {
 		left = val;
 		// System.out.println("left val: " + left);
@@ -31,30 +32,31 @@ public class Player extends Entity {
 		right = val;
 		// System.out.println("right val: " + right);
 	}
-	
+
 	public static void sprint(boolean val) {
 		sprint = val;
 	}
-	public Rectangle getBounds() {
-        return new Rectangle(x, y, sprite.width, sprite.height);
-    }
 
-	public void move(){
+	public Rectangle getBounds() {
+		return new Rectangle(x, y, sprite.width, sprite.height);
+	}
+
+	public void move() {
 		if (left && right) {
-		//stand still
-		}else if(right){
-			x = x+1 + boost;
-		}else if(left){
-			x = x-1 - boost;
+			// stand still
+		} else if (right) {
+			x = x + 1 + boost;
+		} else if (left) {
+			x = x - 1 - boost;
 		}
-		if(down){
+		if (down) {
 			y++;
-		}else if(up){
+		} else if (up) {
 			y--;
 		}
-		if(sprint){
+		if (sprint) {
 			boost = 1;
-		} else{
+		} else {
 			boost = 0;
 		}
 	}
