@@ -10,6 +10,7 @@ public class Player extends Entity {
 	static boolean left, right, down, up;
 	static boolean sprint;
 	int boost;
+	private double t = 0;
 
 	// static int width = sprite.width;
 	// static int height;
@@ -60,7 +61,27 @@ public class Player extends Entity {
 			boost = 0;
 		}
 	}
-
+	
+	public void gravity() {
+		
+		if(y < 336) {
+			falling = true;
+			System.out.println("falling");
+		} else {
+			falling = false;
+			System.out.println("not falling");
+		}
+		
+		if(falling) {
+			y = (int) (y + 0.5 * t);
+			t = t + 0.20;
+		} else {
+			y = y;
+			t = 0;
+		}
+		
+	}
+	
 	public Player() {
 		sprite = Sprite.get("/player.png");
 	}
@@ -68,7 +89,7 @@ public class Player extends Entity {
 	@Override
 	public void update(final Game game) {
 		move();
-
+		gravity();
 	}
 
 	@Override

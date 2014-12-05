@@ -5,8 +5,8 @@ import engine.Game;
 public abstract class Entity {
 	public int x, y;
 	public boolean removable;
-	public boolean gravity;
 	public int velocity;
+	public boolean falling;
 	/**
 	 * This method is used to update the entity
 	 * 
