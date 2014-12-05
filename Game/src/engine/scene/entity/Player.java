@@ -76,7 +76,6 @@ public class Player extends Entity {
 			y = (int) (y + 0.5 * t);
 			t = t + 0.20;
 		} else {
-			y = y;
 			t = 0;
 		}
 		
