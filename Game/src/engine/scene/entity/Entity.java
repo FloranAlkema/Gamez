@@ -3,10 +3,11 @@ package engine.scene.entity;
 import engine.Game;
 
 public abstract class Entity {
-	public int x, y;
+	public int x, y, width, height;
 	public boolean removable;
 	public int velocity;
 	public boolean falling;
+	public boolean collision;
 	/**
 	 * This method is used to update the entity
 	 * 

@@ -30,11 +30,14 @@ public class Ground extends Entity{
 	    }
 	 
 		public void checkCollisions(){
-		Entity player = Game.scene.entities[1];
+		Entity player = Game.scene.entities[0];
 		Rectangle rect = getBounds();
 		Rectangle player1 = new Rectangle(player.x, player.y, player.width, player.height);
-		if(player1.intersects(rect)){System.out.println("Hit floor");}
+		if(rect.intersects(player1)){System.out.println("Hit floor");}else{
+			//System.out.println("hit nothing");
+			};
 		}
+		
 		
 	@Override
 	public void update(final Game game) {

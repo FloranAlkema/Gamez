@@ -66,10 +66,10 @@ public class Player extends Entity {
 		
 		if(y < 336) {
 			falling = true;
-			System.out.println("falling");
+			//System.out.println("falling");
 		} else {
 			falling = false;
-			System.out.println("not falling");
+			//System.out.println("not falling");
 		}
 		
 		if(falling) {

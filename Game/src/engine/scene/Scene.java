@@ -20,6 +20,7 @@ public class Scene {
 		for (int i = 0; i < entities.length; i++) {
 			if (entities[i] == null) {
 				entities[i] = entity;
+				System.out.println(i + " " + entity);
 				return;
 			}
 		}

@@ -64,6 +64,7 @@ public class Game extends JFrame implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
+		
 	}
 
 	/**
