@@ -1,7 +1,7 @@
 package engine.scene.entity;
 
 import java.awt.Rectangle;
-
+import engine.scene.Scene;
 import engine.Game;
 import engine.graphics.Sprite;
 
@@ -30,14 +30,15 @@ public class Ground extends Entity{
 	    }
 	 
 		public void checkCollisions(){
-		Rectangle rect = this.getBounds();
-		Rectangle player = Player.getBounds();
+		Entity player = Game.scene.entities[1];
+		Rectangle rect = getBounds();
+		Rectangle player1 = new Rectangle(player.x, player.y, player.width, player.height);
+		if(player1.intersects(rect)){System.out.println("Hit floor");}
 		}
-	//*/
-	
+		
 	@Override
 	public void update(final Game game) {
-		
+		checkCollisions(); 
 	}
 	
 
