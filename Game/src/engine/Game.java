@@ -24,7 +24,7 @@ public class Game extends JFrame implements Runnable {
 	private boolean running;
 	private Thread thread;
 	private int updates, frames;
-	public static final Scene scene = new Scene();
+	public final Scene scene;
 
 	private final BufferedImage image;
 	private final int[] pixels;
@@ -51,6 +51,7 @@ public class Game extends JFrame implements Runnable {
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 		screen = new Screen();
 
+		scene = new Scene();
 		scene.addEntity(new Player());
 		scene.addEntity(new Ground(0,400));
 

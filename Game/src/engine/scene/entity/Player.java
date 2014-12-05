@@ -1,9 +1,8 @@
 package engine.scene.entity;
 
-import java.awt.Rectangle;
-
 import engine.Game;
 import engine.graphics.Sprite;
+import engine.scene.Scene;
 
 public class Player extends Entity {
 	private final Sprite sprite;
@@ -11,6 +10,12 @@ public class Player extends Entity {
 	static boolean sprint;
 	int boost;
 	private double t = 0;
+	
+	public Player() {
+		sprite = Sprite.get("/player.png");
+		width = sprite.width;
+		height = sprite.height;
+	}
 
 	// static int width = sprite.width;
 	// static int height;
@@ -38,15 +43,12 @@ public class Player extends Entity {
 		sprint = val;
 	}
 
-	public Rectangle getBounds() {
-		return new Rectangle(x, y, sprite.width, sprite.height);
-	}
-
-	public void move() {
+	public void move(final Scene scene) {
 		if (left && right) {
 			// stand still
 		} else if (right) {
 			x = x + 1 + boost;
+			move(scene, 1 + boost, 0);
 		} else if (left) {
 			x = x - 1 - boost;
 		}
@@ -62,9 +64,9 @@ public class Player extends Entity {
 		}
 	}
 	
-	public void gravity() {
-		
-		if(y < 336) {
+	public void gravity(final Scene scene) {
+		move(scene, 0, 2);
+		/*if(y < 336) {
 			falling = true;
 			//System.out.println("falling");
 		} else {
@@ -77,18 +79,14 @@ public class Player extends Entity {
 			t = t + 0.20;
 		} else {
 			t = 0;
-		}
+		}*/
 		
 	}
 	
-	public Player() {
-		sprite = Sprite.get("/player.png");
-	}
-
 	@Override
 	public void update(final Game game) {
-		move();
-		gravity();
+		move(game.scene);
+		gravity(game.scene);
 	}
 
 	@Override
