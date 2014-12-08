@@ -51,6 +51,7 @@ public class Player extends Entity {
 			move(scene, 1 + boost, 0);
 		} else if (left) {
 			x = x - 1 - boost;
+			move(scene, -1 - boost, 0);
 		}
 		if (down) {
 			y++;
