@@ -10,6 +10,8 @@ public class Player extends Entity {
 	static boolean sprint;
 	int boost;
 	private double t = 0;
+	private double jumpT = 0;
+	public static boolean collision;
 	
 	public Player() {
 		sprite = Sprite.get("/player.png");
@@ -54,9 +56,10 @@ public class Player extends Entity {
 			move(scene, -1 - boost, 0);
 		}
 		if (down) {
-			y++;
+			//y++;
 		} else if (up) {
-			y--;
+			y = (int) (y - 0.2 * jumpT);
+			jumpT = jumpT + 0.20;
 		}
 		if (sprint) {
 			boost = 1;
@@ -66,21 +69,21 @@ public class Player extends Entity {
 	}
 	
 	public void gravity(final Scene scene) {
-		move(scene, 0, 2);
-		/*if(y < 336) {
+		if(!collision) {
 			falling = true;
 			//System.out.println("falling");
 		} else {
 			falling = false;
 			//System.out.println("not falling");
+			jumpT = 0;
 		}
 		
 		if(falling) {
-			y = (int) (y + 0.5 * t);
+			y = (int) (y + 0.2 * t * t);
 			t = t + 0.20;
 		} else {
 			t = 0;
-		}*/
+		}
 		
 	}
 	

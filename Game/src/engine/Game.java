@@ -24,7 +24,7 @@ public class Game extends JFrame implements Runnable {
 	private boolean running;
 	private Thread thread;
 	private int updates, frames;
-	public final Scene scene;
+	public static Scene scene = null;
 
 	private final BufferedImage image;
 	private final int[] pixels;

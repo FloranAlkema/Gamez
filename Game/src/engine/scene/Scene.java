@@ -5,7 +5,7 @@ import engine.graphics.Screen;
 import engine.scene.entity.Entity;
 
 public class Scene {
-	public final Entity[] entities;
+	public static Entity[] entities = null;
 	
 	public Scene() {
 		entities = new Entity[1024];

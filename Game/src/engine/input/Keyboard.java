@@ -25,7 +25,7 @@ public class Keyboard implements KeyListener {
 			Player.left(true);
 			//System.out.println("left");
 		}
-		if (down[87]) {
+		if (down[32]) {
 			Player.up(true);
 			//System.out.println("up");
 		}
