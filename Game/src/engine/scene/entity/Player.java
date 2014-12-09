@@ -18,6 +18,13 @@ public class Player extends Entity {
 		width = sprite.width;
 		height = sprite.height;
 	}
+	public Player(int x, int y) {
+		sprite = Sprite.get("/player.png");
+		width = sprite.width;
+		height = sprite.height;
+		this.x = x;
+		this.y = y;
+	}
 
 	// static int width = sprite.width;
 	// static int height;
