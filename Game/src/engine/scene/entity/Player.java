@@ -11,6 +11,9 @@ public class Player extends Entity {
 	int boost;
 	private double t = 0;
 	private double jumpT = 0;
+	private double v = 0;
+	public static double vv;
+	private double a = 0.05;
 	public static boolean collision;
 	
 	public Player() {
@@ -25,6 +28,8 @@ public class Player extends Entity {
 		this.x = x;
 		this.y = y;
 	}
+
+	
 
 	// static int width = sprite.width;
 	// static int height;
@@ -65,8 +70,7 @@ public class Player extends Entity {
 		if (down) {
 			//y++;
 		} else if (up) {
-			y = (int) (y - 0.2 * jumpT);
-			jumpT = jumpT + 0.20;
+			if(collision){v = -3; y--;}
 		}
 		if (sprint) {
 			boost = 1;
@@ -76,28 +80,34 @@ public class Player extends Entity {
 	}
 	
 	public void gravity(final Scene scene) {
+		
+		
+		
 		if(!collision) {
-			falling = true;
-			//System.out.println("falling");
+			//falling
+			y = (int)(y + v * t);
+			v = v + t * a;
+			t += 0.2;
 		} else {
-			falling = false;
-			//System.out.println("not falling");
-			jumpT = 0;
+			//on ground
+			v = 0;
+			if(up){v=-3;}
+			vv = v;
+			//y--;
+			t = 0;
+			
 		}
 		
-		if(falling) {
-			y = (int) (y + 0.2 * t * t);
-			t = t + 0.20;
-		} else {
-			t = 0;
-		}
+		
 		
 	}
 	
 	@Override
 	public void update(final Game game) {
+		//Ground.checkCollisions();
 		move(game.scene);
 		gravity(game.scene);
+		System.out.println(v);
 	}
 
 	@Override

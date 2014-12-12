@@ -32,6 +32,7 @@ public class Scene {
 	 * @param game
 	 */
 	public void update(final Game game) {
+		
 		for (int i = 0; i < entities.length; i++) {
 			final Entity entity = entities[i];
 			if (entity != null) {

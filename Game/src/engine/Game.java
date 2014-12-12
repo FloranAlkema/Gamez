@@ -52,7 +52,7 @@ public class Game extends JFrame implements Runnable {
 		screen = new Screen();
 
 		scene = new Scene();
-		scene.addEntity(new Player(0, 330));
+		scene.addEntity(new Player(0, 336));
 		scene.addEntity(new Ground(0,400));
 		setVisible(true);
 	}
@@ -85,9 +85,12 @@ public class Game extends JFrame implements Runnable {
 			createBufferStrategy(3);
 			return;
 		}
-
+		
 		final Graphics g = buffer.getDrawGraphics();
 		Arrays.fill(screen.pixels, 0x000000);
+		//g.drawString("speed: " + Player.vv, 10, 10);
+		//g.drawString("X: " + Player.x, 10, 20);
+		//g.drawString("Y: " + Player.y, 10, 30);
 
 		scene.render(this);
 

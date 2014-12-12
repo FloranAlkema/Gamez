@@ -29,13 +29,14 @@ public class Ground extends Entity {
 		Entity player = Game.scene.entities[0];
 		Rectangle rect = getBounds();
 		Rectangle player1 = new Rectangle(player.x, player.y, player.width,
-				player.height);
+				player.height + 1);
 		if (rect.intersects(player1)) {
 			Player.collision = true;
+			
 		} else {
 			Player.collision = false;
 		}
-		;
+		
 	}
 	
 
