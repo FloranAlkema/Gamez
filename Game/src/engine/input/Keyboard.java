@@ -41,7 +41,7 @@ public class Keyboard implements KeyListener {
 			Player.sprint(true);
 		}
 		if (down[27]) {
-			
+			System.exit(-1);
 		}
 	}
 
