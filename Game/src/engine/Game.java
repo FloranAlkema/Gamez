@@ -1,5 +1,6 @@
 package engine;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -44,8 +45,8 @@ public class Game extends JFrame implements Runnable {
 		addKeyListener(keyboard = new Keyboard());
 		addMouseListener(mouse = new Mouse());
 
-		//scene = new Scene(); 
-		//gedaan in variable declaration voor static
+		// scene = new Scene();
+		// gedaan in variable declaration voor static
 
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -53,7 +54,7 @@ public class Game extends JFrame implements Runnable {
 
 		scene = new Scene();
 		scene.addEntity(new Player(0, 336));
-		scene.addEntity(new Ground(0,400));
+		scene.addEntity(new Ground(0, 400));
 		setVisible(true);
 	}
 
@@ -64,7 +65,7 @@ public class Game extends JFrame implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
-		
+
 	}
 
 	/**
@@ -85,12 +86,9 @@ public class Game extends JFrame implements Runnable {
 			createBufferStrategy(3);
 			return;
 		}
-		
+
 		final Graphics g = buffer.getDrawGraphics();
 		Arrays.fill(screen.pixels, 0x000000);
-		//g.drawString("speed: " + Player.vv, 10, 10);
-		//g.drawString("X: " + Player.x, 10, 20);
-		//g.drawString("Y: " + Player.y, 10, 30);
 
 		scene.render(this);
 
@@ -98,6 +96,10 @@ public class Game extends JFrame implements Runnable {
 			pixels[i] = screen.pixels[i];
 		}
 		g.drawImage(image, 0, 0, null);
+		g.setColor(Color.WHITE);
+		g.drawString("speed: " + Player.vvv, 100, 110);
+		g.drawString("X: " + Player.xx, 100, 120);
+		g.drawString("Y: " + Player.yy, 100, 130);
 		g.dispose();
 		buffer.show();
 
@@ -129,8 +131,8 @@ public class Game extends JFrame implements Runnable {
 			}
 
 			if (System.currentTimeMillis() - system > 1000) {
-				//System.out.println(String.format(
-				//		"[Game] - updates: %s, frames: %s", updates, frames));
+				// System.out.println(String.format(
+				// "[Game] - updates: %s, frames: %s", updates, frames));
 				updates = 0;
 				frames = 0;
 				system += 1000;

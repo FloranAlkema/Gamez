@@ -20,7 +20,7 @@ public class Keyboard implements KeyListener {
 	@Override
 	public void keyPressed(final KeyEvent e) {
 		down[e.getKeyCode()] = true;
-		//System.out.println(e.getKeyCode());
+		System.out.println(e.getKeyCode());
 		if (down[65]) {
 			Player.left(true);
 			//System.out.println("left");
@@ -40,6 +40,9 @@ public class Keyboard implements KeyListener {
 		if (down[16]){
 			Player.sprint(true);
 		}
+		if (down[27]) {
+			
+		}
 	}
 
 	@Override
@@ -49,7 +52,7 @@ public class Keyboard implements KeyListener {
 			Player.left(false);
 			//System.out.println("not left");
 		} 
-		if (!down[87]) {
+		if (!down[32]) {
 			Player.up(false);
 			//System.out.println("not up");
 		}
