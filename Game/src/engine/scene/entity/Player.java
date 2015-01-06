@@ -99,8 +99,8 @@ public class Player extends Entity {
 			// falling
 			y = (int) (y + v * t);
 			v = v + t * a;
-			if (v > 2) {
-				v = 2;
+			if (v > 1) {
+				v = 1;
 			}
 			t += 0.2;
 		}
