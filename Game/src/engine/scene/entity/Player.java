@@ -1,5 +1,7 @@
 package engine.scene.entity;
 
+import java.awt.Rectangle;
+
 import engine.Game;
 import engine.graphics.Sprite;
 import engine.scene.Scene;
@@ -14,7 +16,7 @@ public class Player extends Entity {
 	private double v = 0;
 	public static double vv;
 	private double a = 0.05;
-	public static boolean collision;
+	public static boolean collision, yCollision, xCollision;
 	public static int xx, yy;
 	public static double vvv;
 
@@ -22,6 +24,7 @@ public class Player extends Entity {
 		sprite = Sprite.get("/player.png");
 		width = sprite.width;
 		height = sprite.height;
+		type = "Player";
 	}
 
 	public Player(int x, int y) {
@@ -30,10 +33,36 @@ public class Player extends Entity {
 		height = sprite.height;
 		this.x = x;
 		this.y = y;
+		type = "Player";
+	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
 	}
 
-	// static int width = sprite.width;
-	// static int height;
+	public void checkCollisions() {
+		Rectangle playerRect = getBounds();
+		
+		for (Entity entity : Scene.entities) {
+			if (entity != null) {
+				if (entity.getType() == "Ground") {
+					System.out.println(entity);
+					yCollision = intersect(entity.getY(), entity.height, getY(), height);
+
+				}
+			}
+		}
+
+	}
+	
+	public boolean intersect(int location1, int width1, int location2, int width2){
+		Rectangle rect1 = new Rectangle(location1, 1, location1 + width1, 1);
+		Rectangle rect2 = new Rectangle(location2, 1, location2 + width2, 1);
+		return rect1.intersects(rect2);
+	}
+
 	public static void left(boolean val) {
 		left = val;
 		// System.out.println("left val: " + left);
@@ -109,7 +138,7 @@ public class Player extends Entity {
 
 	@Override
 	public void update(final Game game) {
-		// Ground.checkCollisions();
+		checkCollisions();
 		move(game.scene);
 		gravity(game.scene);
 		// System.out.println(v);

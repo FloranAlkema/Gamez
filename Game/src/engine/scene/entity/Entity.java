@@ -13,6 +13,7 @@ public abstract class Entity {
 	public int velocity;
 	public boolean falling;
 	public boolean collision;
+	public String type;
 
 	/**
 	 * This method is used to update the entity
@@ -31,6 +32,15 @@ public abstract class Entity {
 		return bounds;
 	}
 
+	public String getType(){
+		return type;
+	}
+	public int getX(){
+		return x;
+	}
+	public int getY(){
+		return y;
+	}
 	/**
 	 * This method is called after a collision with the entity and should return
 	 * true if it's a passable collision

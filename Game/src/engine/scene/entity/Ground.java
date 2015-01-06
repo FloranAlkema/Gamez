@@ -11,10 +11,12 @@ public class Ground extends Entity {
 
 	public Ground() {
 		this(0, 0);
+		type = "Ground";
 	}
 
 	public Ground(int x, int y) {
 		this(x, y, "Floor.png");
+		type = "Ground";
 	}
 
 	public Ground(int x, int y, String sprite) {
@@ -25,24 +27,12 @@ public class Ground extends Entity {
 		height = this.sprite.height;
 	}
 
-	public void checkCollisions() {
-		Entity player = Game.scene.entities[0];
-		Rectangle rect = getBounds();
-		Rectangle player1 = new Rectangle(player.x, player.y, player.width,
-				player.height + 1);
-		if (rect.intersects(player1)) {
-			Player.collision = true;
-			
-		} else {
-			Player.collision = false;
-		}
-		
-	}
+	
 	
 
 	@Override
 	public void update(final Game game) {
-		checkCollisions();
+		//checkCollisions();
 	}
 
 	@Override
