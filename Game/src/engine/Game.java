@@ -53,9 +53,10 @@ public class Game extends JFrame implements Runnable {
 		screen = new Screen();
 
 		scene = new Scene();
-		scene.addEntity(new Player(0, 336));
-		scene.addEntity(new Ground(0, 400));
-		scene.addEntity(new Ground(400, 300));
+
+		scene.addEntity(new Ground(0, 0));
+		scene.addEntity(new Player(0, 100));
+		//scene.addEntity(new Ground(0, 400));
 		setVisible(true);
 	}
 

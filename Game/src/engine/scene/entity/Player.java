@@ -43,14 +43,16 @@ public class Player extends Entity {
 	}
 
 	public void checkCollisions() {
+		collision = !true;
 		Rectangle playerRect = getBounds();
 		
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {
 				if (entity.getType() == "Ground") {
 					System.out.println(entity);
-					yCollision = intersect(entity.getY(), entity.height, getY(), height);
-
+					Rectangle ground = entity.getBounds();
+					//collision = intersect(entity.getY(), entity.height, getY(), height);
+					collision = ground.intersects(playerRect);	
 				}
 			}
 		}
@@ -139,8 +141,9 @@ public class Player extends Entity {
 	@Override
 	public void update(final Game game) {
 		checkCollisions();
-		move(game.scene);
 		gravity(game.scene);
+		move(game.scene);
+
 		// System.out.println(v);
 		yy = y;
 		xx = x;
