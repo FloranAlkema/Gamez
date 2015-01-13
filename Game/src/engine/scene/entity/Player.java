@@ -55,7 +55,7 @@ public class Player extends Entity {
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {
 				if (entity.getType() == "Ground") {
-					System.out.println(entity);
+					//System.out.println(entity);
 					Rectangle top = entity.getTop();
 					Rectangle left = entity.getLeft();
 					Rectangle right = entity.getRight();
@@ -148,12 +148,11 @@ public class Player extends Entity {
 			// on ground
 			v = 0;
 			vv = 0;
+			t = 0;
 			if (up) {
 				v = -3;
 			}
-			t = 0;
-		}
-		if (!collisionTop) {
+		} else if (!collisionTop) {
 			// falling
 			y = (int) (y + v * t);
 			v = v + t * a;
@@ -161,13 +160,6 @@ public class Player extends Entity {
 				v = 1;
 			}
 			t += 0.2;
-			tNext = t + 0.2;
-			yNext = (int) (yNext + vNext * t);
-			vNext = vNext + tNext * a;
-			if (vNext > 1) {
-				vNext = 1;
-			}
-			playerNext.y = (int) yNext;
 		}
 
 	}
