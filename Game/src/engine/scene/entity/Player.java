@@ -11,14 +11,15 @@ public class Player extends Entity {
 	static boolean left, right, down, up;
 	static boolean sprint;
 	int boost;
-	private double t = 0;
+	private double t = 0, tNext = 0;
 	private double jumpT = 0;
-	private double v = 0;
+	private double v = 0, vNext = 0, yNext = 0;
 	public static double vv;
 	private double a = 0.05;
 	public static boolean collisionTop, collisionRight, collisionLeft;
 	public static int xx, yy;
 	public static double vvv;
+	public Rectangle playerNext = getBounds();
 
 	public Player() {
 		sprite = Sprite.get("/player.png");
@@ -47,6 +48,7 @@ public class Player extends Entity {
 	public void checkCollisions() {
 		collision = !true;
 		Rectangle playerRect = getBounds();
+		playerNext.x = 0;
 		collisionTop = false;
 		collisionLeft = false;
 		collisionRight = false;
@@ -60,6 +62,10 @@ public class Player extends Entity {
 
 					if (top.intersects(playerRect)) {
 						collisionTop = true;
+						System.out.println("top");
+					}
+					if (top.intersects(playerNext)) {
+						v = 0.1;
 						System.out.println("top");
 					}
 
@@ -127,7 +133,9 @@ public class Player extends Entity {
 				y--;
 			}
 		}
-		if (sprint) {
+		if (sprint && collisionTop && boost == 0) {
+			boost = 1;
+		} else if (sprint && !collisionTop && boost == 1) {
 			boost = 1;
 		} else {
 			boost = 0;
@@ -153,6 +161,13 @@ public class Player extends Entity {
 				v = 1;
 			}
 			t += 0.2;
+			tNext = t + 0.2;
+			yNext = (int) (yNext + vNext * t);
+			vNext = vNext + tNext * a;
+			if (vNext > 1) {
+				vNext = 1;
+			}
+			playerNext.y = (int) yNext;
 		}
 
 	}

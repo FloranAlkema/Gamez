@@ -45,7 +45,7 @@ public abstract class Entity {
 	public Rectangle getLeft() {
 		Rectangle bounds = null;
 		if (bounds == null) {
-			bounds = new Rectangle(x, y, 1, height);
+			bounds = new Rectangle(x-1, y, 1, height);
 		} else {
 			bounds.setBounds(x, y, width, height);
 		}
