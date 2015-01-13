@@ -16,7 +16,7 @@ public class Player extends Entity {
 	private double v = 0;
 	public static double vv;
 	private double a = 0.05;
-	public static boolean collision, yCollision, xCollision;
+	public static boolean collisionTop, collisionRight, collisionLeft;
 	public static int xx, yy;
 	public static double vvv;
 
@@ -35,31 +35,51 @@ public class Player extends Entity {
 		this.y = y;
 		type = "Player";
 	}
-	public int getX(){
+
+	public int getX() {
 		return x;
 	}
-	public int getY(){
+
+	public int getY() {
 		return y;
 	}
 
 	public void checkCollisions() {
 		collision = !true;
 		Rectangle playerRect = getBounds();
-		
+		collisionTop = false;
+		collisionLeft = false;
+		collisionRight = false;
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {
 				if (entity.getType() == "Ground") {
 					System.out.println(entity);
-					Rectangle ground = entity.getBounds();
-					//collision = intersect(entity.getY(), entity.height, getY(), height);
-					collision = ground.intersects(playerRect);	
+					Rectangle top = entity.getTop();
+					Rectangle left = entity.getLeft();
+					Rectangle right = entity.getRight();
+
+					if (top.intersects(playerRect)) {
+						collisionTop = true;
+						System.out.println("top");
+					}
+
+					if (left.intersects(playerRect)) {
+						collisionLeft = true;
+						System.out.println("left");
+					}
+
+					if (right.intersects(playerRect)) {
+						collisionRight = true;
+						System.out.println("right");
+					}
 				}
 			}
 		}
 
 	}
-	
-	public boolean intersect(int location1, int width1, int location2, int width2){
+
+	public boolean intersect(int location1, int width1, int location2,
+			int width2) {
 		Rectangle rect1 = new Rectangle(location1, 1, location1 + width1, 1);
 		Rectangle rect2 = new Rectangle(location2, 1, location2 + width2, 1);
 		return rect1.intersects(rect2);
@@ -92,10 +112,10 @@ public class Player extends Entity {
 	public void move(final Scene scene) {
 		if (left && right) {
 			// stand still
-		} else if (right) {
+		} else if (right && !collisionLeft) {
 			x = x + 1 + boost;
 			move(scene, 1 + boost, 0);
-		} else if (left) {
+		} else if (left && !collisionRight) {
 			x = x - 1 - boost;
 			move(scene, -1 - boost, 0);
 		}
@@ -103,7 +123,7 @@ public class Player extends Entity {
 			// y++;
 		}
 		if (up) {
-			if (collision) {
+			if (collisionTop) {
 				y--;
 			}
 		}
@@ -116,17 +136,16 @@ public class Player extends Entity {
 
 	public void gravity(final Scene scene) {
 
-		if (collision) {
+		if (collisionTop) {
 			// on ground
 			v = 0;
 			vv = 0;
 			if (up) {
 				v = -3;
 			}
-			vv = v;
 			t = 0;
 		}
-		if (!collision) {
+		if (!collisionTop) {
 			// falling
 			y = (int) (y + v * t);
 			v = v + t * a;

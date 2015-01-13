@@ -6,7 +6,7 @@ import engine.Game;
 import engine.scene.Scene;
 
 public abstract class Entity {
-	private Rectangle bounds;
+	
 
 	public int x, y, width, height;
 	public boolean removable;
@@ -23,8 +23,39 @@ public abstract class Entity {
 	public abstract void update(final Game game);
 
 	public Rectangle getBounds() {
+		Rectangle bounds = null;
 		if (bounds == null) {
 			bounds = new Rectangle(x, y, width, height);
+		} else {
+			bounds.setBounds(x, y, width, height);
+		}
+
+		return bounds;
+	}
+	public Rectangle getTop() {
+		Rectangle bounds = null;
+		if (bounds == null) {
+			bounds = new Rectangle(x, y, width, 1);
+		} else {
+			bounds.setBounds(x, y, width, height);
+		}
+
+		return bounds;
+	}
+	public Rectangle getLeft() {
+		Rectangle bounds = null;
+		if (bounds == null) {
+			bounds = new Rectangle(x, y, 1, height);
+		} else {
+			bounds.setBounds(x, y, width, height);
+		}
+
+		return bounds;
+	}
+	public Rectangle getRight() {
+		Rectangle bounds = null;
+		if (bounds == null) {
+			bounds = new Rectangle(x+width+1, y, 1, height);
 		} else {
 			bounds.setBounds(x, y, width, height);
 		}
