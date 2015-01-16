@@ -16,8 +16,9 @@ public class Player extends Entity {
 	private double v = 0, vNext = 0, yNext = 0;
 	public static double vv;
 	private double a = 0.05;
-	public static boolean collisionTop, collisionRight, collisionLeft;
-	public static int xx, yy;
+	public static boolean collisionTop, collisionRight, collisionLeft,
+			collisionNext, closeToGround;
+	public static int xx, yy, groundY;
 	public static double vvv;
 	public Rectangle playerNext = getBounds();
 
@@ -48,14 +49,17 @@ public class Player extends Entity {
 	public void checkCollisions() {
 		collision = !true;
 		Rectangle playerRect = getBounds();
+		Rectangle playerRectPlus = getBounds();
+		playerRectPlus.height += 1;
 		playerNext.x = 0;
 		collisionTop = false;
 		collisionLeft = false;
 		collisionRight = false;
+		collisionNext = false;
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {
 				if (entity.getType() == "Ground") {
-					//System.out.println(entity);
+					// System.out.println(entity);
 					Rectangle top = entity.getTop();
 					Rectangle left = entity.getLeft();
 					Rectangle right = entity.getRight();
@@ -63,6 +67,11 @@ public class Player extends Entity {
 					if (top.intersects(playerRect)) {
 						collisionTop = true;
 						System.out.println("top");
+					}
+					if (top.intersects(playerRectPlus)) {
+						collisionNext = true;
+						groundY = entity.getY() - this.height;
+						System.out.println("next");
 					}
 					if (top.intersects(playerNext)) {
 						v = 0.1;
@@ -136,16 +145,24 @@ public class Player extends Entity {
 	}
 
 	public void gravity(final Scene scene) {
+		if (collisionNext && !collisionTop && !up) {
+			v = 0;
+			y = groundY;
+		}
+		if(collisionNext && up){
+			y--;
+			v = -3;
+		}
 
-		if (collisionTop) {
+		if (collisionTop && collisionNext) {
 			// on ground
+			y--;
+
 			v = 0;
 			vv = 0;
 			t = 0;
-			if (up) {
-				v = -3;
-			}
-		} else if (!collisionTop) {
+		}
+		if (!collisionTop && !collisionNext) {
 			// falling
 			y = (int) (y + v * t);
 			v = v + t * a;
