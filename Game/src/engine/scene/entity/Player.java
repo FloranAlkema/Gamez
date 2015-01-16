@@ -11,9 +11,8 @@ public class Player extends Entity {
 	static boolean left, right, down, up;
 	static boolean sprint;
 	int boost;
-	private double t = 0, tNext = 0;
-	private double jumpT = 0;
-	private double v = 0, vNext = 0, yNext = 0;
+	private double t = 0;
+	private double v = 0;
 	public static double vv;
 	private double a = 0.05;
 	public static boolean collisionTop, collisionRight, collisionLeft,
@@ -38,13 +37,6 @@ public class Player extends Entity {
 		type = "Player";
 	}
 
-	public int getX() {
-		return x;
-	}
-
-	public int getY() {
-		return y;
-	}
 
 	public void checkCollisions() {
 		collision = !true;

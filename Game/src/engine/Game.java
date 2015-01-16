@@ -24,6 +24,7 @@ public class Game extends JFrame implements Runnable {
 
 	private boolean running;
 	private Thread thread;
+	@SuppressWarnings("unused")
 	private int updates, frames;
 	public static Scene scene = null;
 

@@ -26,8 +26,6 @@ public abstract class Entity {
 		Rectangle bounds = null;
 		if (bounds == null) {
 			bounds = new Rectangle(x, y, width, height);
-		} else {
-			bounds.setBounds(x, y, width, height);
 		}
 
 		return bounds;
@@ -36,8 +34,6 @@ public abstract class Entity {
 		Rectangle bounds = null;
 		if (bounds == null) {
 			bounds = new Rectangle(x, y, width, 1);
-		} else {
-			bounds.setBounds(x, y, width, height);
 		}
 
 		return bounds;
@@ -46,8 +42,6 @@ public abstract class Entity {
 		Rectangle bounds = null;
 		if (bounds == null) {
 			bounds = new Rectangle(x-1, y, 1, height);
-		} else {
-			bounds.setBounds(x, y, width, height);
 		}
 
 		return bounds;
@@ -56,8 +50,6 @@ public abstract class Entity {
 		Rectangle bounds = null;
 		if (bounds == null) {
 			bounds = new Rectangle(x+width+1, y, 1, height);
-		} else {
-			bounds.setBounds(x, y, width, height);
 		}
 
 		return bounds;

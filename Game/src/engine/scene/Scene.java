@@ -1,7 +1,6 @@
 package engine.scene;
 
 import engine.Game;
-import engine.graphics.Screen;
 import engine.scene.entity.Entity;
 
 public class Scene {
