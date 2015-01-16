@@ -84,13 +84,6 @@ public class Player extends Entity {
 
 	}
 
-	public boolean intersect(int location1, int width1, int location2,
-			int width2) {
-		Rectangle rect1 = new Rectangle(location1, 1, location1 + width1, 1);
-		Rectangle rect2 = new Rectangle(location2, 1, location2 + width2, 1);
-		return rect1.intersects(rect2);
-	}
-
 	public static void left(boolean val) {
 		left = val;
 		// System.out.println("left val: " + left);

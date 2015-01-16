@@ -102,6 +102,7 @@ public class Game extends JFrame implements Runnable {
 		g.drawString("speed: " + Player.vvv, 100, 110);
 		g.drawString("X: " + Player.xx, 100, 120);
 		g.drawString("Y: " + Player.yy, 100, 130);
+	//	g.drawString("FPS: " + updates, 100, 140);
 		g.dispose();
 		buffer.show();
 
