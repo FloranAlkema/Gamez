@@ -10,6 +10,7 @@ import java.util.Arrays;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
+import engine.graphics.Counter;
 import engine.graphics.Screen;
 import engine.input.Keyboard;
 import engine.input.Mouse;
@@ -102,11 +103,12 @@ public class Game extends JFrame implements Runnable {
 			pixels[i] = screen.pixels[i];
 		}
 		g.drawImage(image, 0, 0, null);
+		// g.drawImage(ChickenScore, )
 		g.setColor(Color.WHITE);
 		g.drawString("speed: " + Player.vvv, 50, 110);
 		g.drawString("X: " + Player.xx, 50, 120);
 		g.drawString("Y: " + Player.yy, 50, 130);
-	//	g.drawString("FPS: " + updates, 50, 140);
+		// g.drawString("FPS: " + updates, 50, 140);
 		g.drawString("Score: " + Counter.score, 50, 150);
 		g.dispose();
 		buffer.show();

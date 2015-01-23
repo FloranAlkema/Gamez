@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 import engine.Game;
 import engine.graphics.Sprite;
 import engine.scene.Scene;
+import engine.graphics.Counter;
 
 public class Player extends Entity {
 	private final Sprite sprite;
@@ -54,6 +55,7 @@ public class Player extends Entity {
 					if (chicken.intersects(playerRect)) {
 						System.out.println("JE MOEDER");
 						Game.scene.removeEntity(entity);
+						Counter.score++;
 					}
 				}
 				if (entity.getType() == "Ground") {
