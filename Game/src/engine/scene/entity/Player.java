@@ -53,7 +53,7 @@ public class Player extends Entity {
 					Rectangle chicken = entity.getBounds();
 					if (chicken.intersects(playerRect)) {
 						System.out.println("JE MOEDER");
-
+						Game.scene.removeEntity(entity);
 					}
 				}
 				if (entity.getType() == "Ground") {
