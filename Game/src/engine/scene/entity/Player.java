@@ -37,12 +37,11 @@ public class Player extends Entity {
 		type = "Player";
 	}
 
-
 	public void checkCollisions() {
 		collision = !true;
 		Rectangle playerRect = getBounds();
 		Rectangle playerRectPlus = getBounds();
-		playerRectPlus.height += 1; //Bigger Player rectangle
+		playerRectPlus.height += 1; // Bigger Player rectangle
 		playerNext.x = 0;
 		collisionTop = false;
 		collisionLeft = false;
@@ -50,20 +49,28 @@ public class Player extends Entity {
 		collisionNext = false;
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {
+				if (entity.getType() == "Chicken") {
+					Rectangle chicken = entity.getBounds();
+					if (chicken.intersects(playerRect)) {
+						System.out.println("JE MOEDER");
+
+					}
+				}
 				if (entity.getType() == "Ground") {
 					// System.out.println(entity);
 					Rectangle top = entity.getTop();
 					Rectangle left = entity.getLeft();
 					Rectangle right = entity.getRight();
 
-					if (top.intersects(playerRect)) { //player on ground
+					if (top.intersects(playerRect)) { // player on ground
 						collisionTop = true;
 						System.out.println("top");
 					}
-					if (top.intersects(playerRectPlus)) { // player on ground + 1
+					if (top.intersects(playerRectPlus)) { // player on ground +
+															// 1
 						collisionNext = true;
 						groundY = entity.getY() - this.height;
-						//System.out.println("next");
+						// System.out.println("next");
 					}
 					if (top.intersects(playerNext)) {
 						v = 0.1;
@@ -141,7 +148,7 @@ public class Player extends Entity {
 			v = 0;
 			y = groundY;
 		}
-		if(collisionNext && up){
+		if (collisionNext && up) {
 			y--;
 			v = -3;
 		}

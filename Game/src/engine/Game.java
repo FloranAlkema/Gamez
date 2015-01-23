@@ -14,12 +14,13 @@ import engine.graphics.Screen;
 import engine.input.Keyboard;
 import engine.input.Mouse;
 import engine.scene.Scene;
+import engine.scene.entity.Chicken;
 import engine.scene.entity.Ground;
 import engine.scene.entity.Player;
 
 public class Game extends JFrame implements Runnable {
-	public static final int WIDTH = 720;
-	public static final int HEIGHT = 480;
+	public static final int WIDTH = 1280;
+	public static final int HEIGHT = 720;
 	public static final int DIMENSION = WIDTH * HEIGHT;
 
 	private boolean running;
@@ -36,7 +37,7 @@ public class Game extends JFrame implements Runnable {
 	public final Mouse mouse;
 
 	public Game() {
-		setTitle("Such title");
+		setTitle("How to be a dEEEEM niggeR");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
 
@@ -59,6 +60,7 @@ public class Game extends JFrame implements Runnable {
 
 		scene.addEntity(new Ground(0, 400));
 		scene.addEntity(new Player(0, 320));
+		scene.addEntity(new Chicken(150, 320));
 		setVisible(true);
 	}
 
