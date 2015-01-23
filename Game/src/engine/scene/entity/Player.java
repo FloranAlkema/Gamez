@@ -42,7 +42,7 @@ public class Player extends Entity {
 		collision = !true;
 		Rectangle playerRect = getBounds();
 		Rectangle playerRectPlus = getBounds();
-		playerRectPlus.height += 1;
+		playerRectPlus.height += 1; //Bigger Player rectangle
 		playerNext.x = 0;
 		collisionTop = false;
 		collisionLeft = false;
@@ -56,14 +56,14 @@ public class Player extends Entity {
 					Rectangle left = entity.getLeft();
 					Rectangle right = entity.getRight();
 
-					if (top.intersects(playerRect)) {
+					if (top.intersects(playerRect)) { //player on ground
 						collisionTop = true;
 						System.out.println("top");
 					}
-					if (top.intersects(playerRectPlus)) {
+					if (top.intersects(playerRectPlus)) { // player on ground + 1
 						collisionNext = true;
 						groundY = entity.getY() - this.height;
-						System.out.println("next");
+						//System.out.println("next");
 					}
 					if (top.intersects(playerNext)) {
 						v = 0.1;
