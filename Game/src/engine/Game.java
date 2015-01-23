@@ -18,8 +18,8 @@ import engine.scene.entity.Ground;
 import engine.scene.entity.Player;
 
 public class Game extends JFrame implements Runnable {
-	public static final int WIDTH = 720;
-	public static final int HEIGHT = 480;
+	public static final int WIDTH = 1280;
+	public static final int HEIGHT = 720;
 	public static final int DIMENSION = WIDTH * HEIGHT;
 
 	private boolean running;
@@ -56,7 +56,7 @@ public class Game extends JFrame implements Runnable {
 		scene = new Scene();
 
 		scene.addEntity(new Ground(400, 380));
-
+		
 		scene.addEntity(new Ground(0, 400));
 		scene.addEntity(new Player(0, 320));
 		setVisible(true);

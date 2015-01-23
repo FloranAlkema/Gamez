@@ -23,25 +23,27 @@ public class Keyboard implements KeyListener {
 		//System.out.println(e.getKeyCode());
 		if (down[65]) {
 			Player.left(true);
-			//System.out.println("left");
+			//Left - a
 		}
 		if (down[32]) {
 			Player.up(true);
-			//System.out.println("up");
+			//Up - space
 		}
 		if (down[83]) {
 			Player.down(true);
-			//System.out.println("down");
+			//Down - s
 		}
 		if (down[68]) {
 			Player.right(true);
-			//System.out.println("right");
+			//Right - d
 		}
 		if (down[16]){
 			Player.sprint(true);
+			//Shift
 		}
 		if (down[27]) {
 			System.exit(-1);
+			//Esc
 		}
 	}
 

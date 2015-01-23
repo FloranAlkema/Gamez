@@ -14,7 +14,7 @@ public class Player extends Entity {
 	private double t = 0;
 	private double v = 0;
 	public static double vv;
-	private double a = 0.05;
+	private double a = 0.05d;
 	public static boolean collisionTop, collisionRight, collisionLeft,
 			collisionNext, closeToGround;
 	public static int xx, yy, groundY;
@@ -56,11 +56,11 @@ public class Player extends Entity {
 					Rectangle left = entity.getLeft();
 					Rectangle right = entity.getRight();
 
-					if (top.intersects(playerRect)) { //player on ground
+					if (top.intersects(playerRect)) { 		//player on ground
 						collisionTop = true;
-						System.out.println("top");
+						//System.out.println("top");
 					}
-					if (top.intersects(playerRectPlus)) { // player on ground + 1
+					if (top.intersects(playerRectPlus)) {	// player on ground + 1
 						collisionNext = true;
 						groundY = entity.getY() - this.height;
 						//System.out.println("next");
@@ -127,23 +127,23 @@ public class Player extends Entity {
 				y--;
 			}
 		}
-		if (sprint && collisionTop && boost == 0) {
-			boost = 1;
-		} else if (sprint && !collisionTop && boost == 1) {
-			boost = 1;
+		if (sprint && collisionNext && boost == 0) {
+			boost = 5;
+		} else if (sprint && !collisionNext && boost == 5) {
+			boost = 5;
 		} else {
 			boost = 0;
 		}
 	}
 
 	public void gravity(final Scene scene) {
-		if (collisionNext && !collisionTop && !up) {
+		if (collisionNext && !collisionTop && !up && v > 0) {
 			v = 0;
 			y = groundY;
 		}
 		if(collisionNext && up){
 			y--;
-			v = -3;
+			v = -4;
 		}
 
 		if (collisionTop && collisionNext) {
@@ -171,6 +171,7 @@ public class Player extends Entity {
 		checkCollisions();
 		gravity(game.scene);
 		move(game.scene);
+		System.out.println(v);
 
 		// System.out.println(v);
 		yy = y;

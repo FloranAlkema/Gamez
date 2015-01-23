@@ -81,8 +81,8 @@ public abstract class Entity {
 		this.x += x;
 		this.y += y;
 
-		final Rectangle bounds = getBounds();
-		for (final Entity entity : scene.entities)
+		//final Rectangle bounds = getBounds();
+		/*for (final Entity entity : scene.entities)
 			if (entity != null && entity != this
 					&& bounds.intersects(entity.getBounds()))
 				if (!onCollision(entity) || !entity.onCollision(this)) {
@@ -90,8 +90,9 @@ public abstract class Entity {
 					this.y -= y;
 					break;
 				}
-
+			*/
 		return this.x != xx || this.y != yy;
+
 	}
 
 	/**
