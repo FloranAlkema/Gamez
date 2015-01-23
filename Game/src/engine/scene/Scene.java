@@ -25,6 +25,14 @@ public class Scene {
 		}
 	}
 	
+	public void removeEntity(final Entity entity){
+		for(int i = 0; i < entities.length; i++){
+			if (entities[i] == entity){
+				entities[i] = null;
+			}
+		}
+	}
+	
 	/**
 	 * This method updates all the entities
 	 * 
