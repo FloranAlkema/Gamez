@@ -6,13 +6,14 @@ import engine.Game;
 import engine.scene.Scene;
 
 public abstract class Entity {
-	
 
 	public int x, y, width, height;
-	public boolean removable;
 	public int velocity;
+
 	public boolean falling;
 	public boolean collision;
+	public boolean removable;
+
 	public String type;
 
 	/**
@@ -30,6 +31,7 @@ public abstract class Entity {
 
 		return bounds;
 	}
+
 	public Rectangle getTop() {
 		Rectangle bounds = null;
 		if (bounds == null) {
@@ -38,32 +40,37 @@ public abstract class Entity {
 
 		return bounds;
 	}
+
 	public Rectangle getLeft() {
 		Rectangle bounds = null;
 		if (bounds == null) {
-			bounds = new Rectangle(x-1, y, 1, height);
+			bounds = new Rectangle(x - 1, y, 1, height);
 		}
 
 		return bounds;
 	}
+
 	public Rectangle getRight() {
 		Rectangle bounds = null;
 		if (bounds == null) {
-			bounds = new Rectangle(x+width+1, y, 1, height);
+			bounds = new Rectangle(x + width + 1, y, 1, height);
 		}
 
 		return bounds;
 	}
 
-	public String getType(){
+	public String getType() {
 		return type;
 	}
-	public int getX(){
+
+	public int getX() {
 		return x;
 	}
-	public int getY(){
+
+	public int getY() {
 		return y;
 	}
+
 	/**
 	 * This method is called after a collision with the entity and should return
 	 * true if it's a passable collision

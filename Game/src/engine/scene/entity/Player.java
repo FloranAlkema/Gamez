@@ -2,6 +2,8 @@ package engine.scene.entity;
 
 import java.awt.Rectangle;
 
+import javax.print.DocFlavor.URL;
+
 import engine.Game;
 import engine.graphics.Sprite;
 import engine.scene.Scene;
@@ -9,18 +11,21 @@ import engine.graphics.Counter;
 
 public class Player extends Entity {
 	private final Sprite sprite;
-	static boolean left, right, down, up;
-	static boolean sprint;
-	int boost;
+
 	private double t = 0;
 	private double v = 0;
 	public static double vv;
 	private double a = 0.05;
-	public static boolean collisionTop, collisionRight, collisionLeft,
-			collisionNext, closeToGround;
+
+	public int boost;
 	public static int xx, yy, groundY;
 	public static double vvv;
 	public Rectangle playerNext = getBounds();
+
+	static boolean left, right, down, up;
+	static boolean sprint;
+	public static boolean collisionTop, collisionRight, collisionLeft,
+			collisionNext, closeToGround;
 
 	public Player() {
 		sprite = Sprite.get("/player.png");
@@ -38,8 +43,11 @@ public class Player extends Entity {
 		type = "Player";
 	}
 
+	/**
+	 * Checks the collisions between the player and entities
+	 */
 	public void checkCollisions() {
-		collision = !true;
+		collision = false;
 		Rectangle playerRect = getBounds();
 		Rectangle playerRectPlus = getBounds();
 		playerRectPlus.height += 1; // Bigger Player rectangle
@@ -53,13 +61,14 @@ public class Player extends Entity {
 				if (entity.getType() == "Chicken") {
 					Rectangle chicken = entity.getBounds();
 					if (chicken.intersects(playerRect)) {
-						System.out.println("JE MOEDER");
+						System.out.println("You gained some chicken!");
+						URL eating = new URL("C:/Users/Floran/git/Gamez/Game/src/eatingSound");
+						
 						Game.scene.removeEntity(entity);
 						Counter.score++;
 					}
 				}
 				if (entity.getType() == "Ground") {
-					// System.out.println(entity);
 					Rectangle top = entity.getTop();
 					Rectangle left = entity.getLeft();
 					Rectangle right = entity.getRight();
@@ -118,6 +127,9 @@ public class Player extends Entity {
 		sprint = val;
 	}
 
+	/**
+	 * Moves the player in a certain direction
+	 */
 	public void move(final Scene scene) {
 		if (left && right) {
 			// stand still
@@ -158,7 +170,6 @@ public class Player extends Entity {
 		if (collisionTop && collisionNext) {
 			// on ground
 			y--;
-
 			v = 0;
 			vv = 0;
 			t = 0;
@@ -181,7 +192,6 @@ public class Player extends Entity {
 		gravity(game.scene);
 		move(game.scene);
 
-		// System.out.println(v);
 		yy = y;
 		xx = x;
 		vvv = v;

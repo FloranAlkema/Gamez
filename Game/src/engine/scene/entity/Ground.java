@@ -1,13 +1,10 @@
 package engine.scene.entity;
 
-import java.awt.Rectangle;
-import engine.scene.Scene;
 import engine.Game;
 import engine.graphics.Sprite;
 
 public class Ground extends Entity {
 	private final Sprite sprite;
-	
 
 	public Ground() {
 		this(0, 0);
@@ -27,12 +24,9 @@ public class Ground extends Entity {
 		height = this.sprite.height;
 	}
 
-	
-	
-
 	@Override
 	public void update(final Game game) {
-		//checkCollisions();
+		// checkCollisions();
 	}
 
 	@Override

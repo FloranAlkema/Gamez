@@ -2,11 +2,13 @@ package engine;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -20,23 +22,28 @@ import engine.scene.entity.Ground;
 import engine.scene.entity.Player;
 
 public class Game extends JFrame implements Runnable {
+	// Variables
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
 	public static final int DIMENSION = WIDTH * HEIGHT;
 
 	private boolean running;
 	private Thread thread;
-	@SuppressWarnings("unused")
 	private int updates, frames;
 	public static Scene scene = null;
 
 	private final BufferedImage image;
 	private final int[] pixels;
-	public final Screen screen;
 
 	public final Keyboard keyboard;
 	public final Mouse mouse;
+	public final Screen screen;
 
+	ImageIcon scoreIcon = new ImageIcon(
+			"C:/Users/Floran/git/Gamez/Game/src/chickenScore.png");
+	Image chicken = scoreIcon.getImage();
+
+	// Game constructor
 	public Game() {
 		setTitle("How to be a dEEEEM niggeR");
 		setSize(WIDTH, HEIGHT);
@@ -47,9 +54,6 @@ public class Game extends JFrame implements Runnable {
 
 		addKeyListener(keyboard = new Keyboard());
 		addMouseListener(mouse = new Mouse());
-
-		// scene = new Scene();
-		// gedaan in variable declaration voor static
 
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
@@ -103,13 +107,13 @@ public class Game extends JFrame implements Runnable {
 			pixels[i] = screen.pixels[i];
 		}
 		g.drawImage(image, 0, 0, null);
-		// g.drawImage(ChickenScore, )
+		g.drawImage(chicken, 1075, 40, null);
 		g.setColor(Color.WHITE);
 		g.drawString("speed: " + Player.vvv, 50, 110);
 		g.drawString("X: " + Player.xx, 50, 120);
 		g.drawString("Y: " + Player.yy, 50, 130);
 		// g.drawString("FPS: " + updates, 50, 140);
-		g.drawString("Score: " + Counter.score, 50, 150);
+		g.drawString("= " + Counter.score, 1140, 80);
 		g.dispose();
 		buffer.show();
 
