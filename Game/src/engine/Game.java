@@ -103,10 +103,11 @@ public class Game extends JFrame implements Runnable {
 		}
 		g.drawImage(image, 0, 0, null);
 		g.setColor(Color.WHITE);
-		g.drawString("speed: " + Player.vvv, 100, 110);
-		g.drawString("X: " + Player.xx, 100, 120);
-		g.drawString("Y: " + Player.yy, 100, 130);
-	//	g.drawString("FPS: " + updates, 100, 140);
+		g.drawString("speed: " + Player.vvv, 50, 110);
+		g.drawString("X: " + Player.xx, 50, 120);
+		g.drawString("Y: " + Player.yy, 50, 130);
+	//	g.drawString("FPS: " + updates, 50, 140);
+		g.drawString("Score: " + Counter.score, 50, 150);
 		g.dispose();
 		buffer.show();
 
