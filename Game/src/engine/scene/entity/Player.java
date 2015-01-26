@@ -1,16 +1,10 @@
 package engine.scene.entity;
 
-import java.applet.AudioClip;
 import java.awt.Rectangle;
-import java.io.File;
-import java.io.IOException;
 
-import javax.print.DocFlavor.URL;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
 
 import engine.Game;
 import engine.graphics.Sprite;
@@ -34,6 +28,8 @@ public class Player extends Entity {
 	static boolean sprint;
 	public static boolean collisionTop, collisionRight, collisionLeft,
 			collisionNext, closeToGround;
+	
+	
 
 	public Player() {
 		sprite = Sprite.get("/player.png");
