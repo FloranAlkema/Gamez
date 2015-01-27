@@ -30,6 +30,8 @@ public class Player extends Entity {
 			collisionNext, closeToGround;
 	
 	
+	
+	
 
 	public Player() {
 		sprite = Sprite.get("/player.png");
@@ -65,6 +67,7 @@ public class Player extends Entity {
 				if (entity.getType() == "Chicken") {
 					Rectangle chicken = entity.getBounds();
 					if (chicken.intersects(playerRect)) {
+						Chicken.playSound();
 						System.out.println("You gained some chicken!");
 						Game.scene.removeEntity(entity);
 						Counter.score++;
