@@ -1,6 +1,7 @@
 package engine;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferStrategy;
@@ -115,13 +116,13 @@ public class Game extends JFrame implements Runnable {
 			pixels[i] = screen.pixels[i];
 		}
 		g.drawImage(image, 0, 0, null);
-		g.drawImage(chicken, 1075, 40, null);
+		g.drawImage(chicken, 1150, 40, null);
 		g.setColor(Color.WHITE);
 		g.drawString("speed: " + Player.vvv, 50, 110);
 		g.drawString("X: " + Player.xx, 50, 120);
 		g.drawString("Y: " + Player.yy, 50, 130);
 		// g.drawString("FPS: " + updates, 50, 140);
-		g.drawString("= " + Counter.score, 1140, 80);
+		g.drawString("= " + Counter.score, 1210, 80);
 		g.dispose();
 		buffer.show();
 
