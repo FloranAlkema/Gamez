@@ -65,9 +65,8 @@ public class Game extends JFrame implements Runnable {
 
 		scene = new Scene();
 
-
-		scene.addEntity(new Ground(0, 500));
 		scene.addEntity(new Player(0, 320));
+		scene.addEntity(new Ground(0, 500));
 		scene.addEntity(new Chicken(150, 320));
 		scene.addEntity(new Chicken(200, 320));
 		scene.addEntity(new Chicken(250, 320));
@@ -75,6 +74,7 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Chicken(350, 320));
 		scene.addEntity(new Chicken(400, 300));
 		scene.addEntity(new Chicken(450, 300));
+	//	scene.addEntity(new ScrollControl());
 		setVisible(true);
 	}
 
