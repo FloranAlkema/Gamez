@@ -181,7 +181,7 @@ public class Player extends Entity {
 		checkCollisions();
 		gravity(game.scene);
 		move(game.scene);
-		System.out.println(v);
+		//System.out.println(v);
 
 		// System.out.println(v);
 		yy = y;
