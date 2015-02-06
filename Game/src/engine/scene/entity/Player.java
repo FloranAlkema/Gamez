@@ -23,7 +23,7 @@ public class Player extends Entity {
 	public static double vvv;
 	public Rectangle playerNext = getBounds();
 	public static Rectangle start = new Rectangle(0, 0, 320, 5000);
-
+	public static Rectangle poop = new Rectangle(-100, 0, 100, 5000);
 	public Player() {
 		sprite = Sprite.get("/player.png");
 		width = sprite.width;
@@ -50,6 +50,11 @@ public class Player extends Entity {
 		collisionLeft = false;
 		collisionRight = false;
 		collisionNext = false;
+		if(poop.intersects(playerRect)) {
+			collisionRight = true;
+		} else {
+			collisionRight = false;
+		}
 		if (playerRect.intersects(start)) {
 			startIntersect = true;
 			System.out.println("Start intersectxxxx");
