@@ -24,6 +24,7 @@ public class ScrollControl {
 	void check(){
 		shouldScrollLeft();
 		shouldScrollRight();
+		
 	}
 	
 	public void update(){
