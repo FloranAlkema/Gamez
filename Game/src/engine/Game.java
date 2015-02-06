@@ -21,6 +21,7 @@ import engine.graphics.Screen;
 import engine.input.Keyboard;
 import engine.input.Mouse;
 import engine.scene.Scene;
+import engine.scene.ScrollControl;
 import engine.scene.entity.Chicken;
 import engine.scene.entity.Ground;
 import engine.scene.entity.Player;
@@ -74,7 +75,7 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Chicken(350, 320));
 		scene.addEntity(new Chicken(400, 300));
 		scene.addEntity(new Chicken(450, 300));
-	//	scene.addEntity(new ScrollControl());
+		scene.addEntity(new ScrollControl());
 		setVisible(true);
 	}
 

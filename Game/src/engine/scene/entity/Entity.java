@@ -62,7 +62,11 @@ public abstract class Entity {
 	public String getType() {
 		return type;
 	}
-
+	public void setX(int n){
+		this.x += n;
+	}
+	
+	
 	public int getX() {
 		return x;
 	}
