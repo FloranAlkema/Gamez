@@ -1,19 +1,16 @@
 package engine;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.IOException;
+import java.net.URL;
 import java.util.Arrays;
 
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.swing.ImageIcon;
+import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -37,7 +34,7 @@ public class Game extends JFrame implements Runnable {
 	private Thread thread;
 	private int updates, frames;
 	public static Scene scene = null;
-
+	static BufferedImage chicken = null;
 	private final BufferedImage image;
 	private final int[] pixels;
 
@@ -45,11 +42,13 @@ public class Game extends JFrame implements Runnable {
 	public final Mouse mouse;
 	public final Screen screen;
 	
-	
 
-	ImageIcon scoreIcon = new ImageIcon(
-			"/src/chickenScore.png");
-	Image chicken = scoreIcon.getImage();
+
+	//ImageIcon scoreIcon = new ImageIcon(
+	//		"/Game/src/ChickenScore.png");
+	//Image chicken = scoreIcon.getImage();
+	//Image chicken;
+	
 
 	// Game constructor
 	public Game() {
@@ -81,6 +80,8 @@ public class Game extends JFrame implements Runnable {
 	}
 
 	public static void reset() {
+		
+
 		start = null;
 		start = new Rectangle(0, 0, 320, 5000);
 		scene = null;
@@ -91,7 +92,7 @@ public class Game extends JFrame implements Runnable {
 		}
 
 		scene.addEntity(new Player(0, 320));
-		scene.addEntity(new Ground(-2000, 500));
+		scene.addEntity(new Ground(0, 500));
 		scene.addEntity(new Chicken(150, 320));
 		scene.addEntity(new Chicken(200, 320));
 		scene.addEntity(new Chicken(250, 320));
