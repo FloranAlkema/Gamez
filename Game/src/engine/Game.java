@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -31,7 +32,7 @@ public class Game extends JFrame implements Runnable {
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
 	public static final int DIMENSION = WIDTH * HEIGHT;
-
+	public static Rectangle start = new Rectangle(0, 0, 320, 5000);
 	private boolean running;
 	private Thread thread;
 	private int updates, frames;
@@ -43,9 +44,11 @@ public class Game extends JFrame implements Runnable {
 	public final Keyboard keyboard;
 	public final Mouse mouse;
 	public final Screen screen;
+	
+	
 
 	ImageIcon scoreIcon = new ImageIcon(
-			"C:/Users/Floran/git/Gamez/Game/src/chickenScore.png");
+			"/src/chickenScore.png");
 	Image chicken = scoreIcon.getImage();
 
 	// Game constructor
@@ -63,19 +66,7 @@ public class Game extends JFrame implements Runnable {
 		image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 		screen = new Screen();
-
-		scene = new Scene();
-
-		scene.addEntity(new Player(0, 320));
-		scene.addEntity(new Ground(0, 500));
-		scene.addEntity(new Chicken(150, 320));
-		scene.addEntity(new Chicken(200, 320));
-		scene.addEntity(new Chicken(250, 320));
-		scene.addEntity(new Chicken(300, 320));
-		scene.addEntity(new Chicken(350, 320));
-		scene.addEntity(new Chicken(400, 300));
-		scene.addEntity(new Chicken(450, 300));
-		scene.addEntity(new ScrollControl());
+		reset();
 		setVisible(true);
 	}
 
@@ -86,6 +77,29 @@ public class Game extends JFrame implements Runnable {
 		thread = new Thread(this);
 		thread.start();
 		running = true;
+
+	}
+
+	public static void reset() {
+		start = null;
+		start = new Rectangle(0, 0, 320, 5000);
+		scene = null;
+		scene = new Scene();
+		for (int i = 0; i < scene.entities.length; i++) {
+			scene.entities[i] = null;
+
+		}
+
+		scene.addEntity(new Player(0, 320));
+		scene.addEntity(new Ground(-2000, 500));
+		scene.addEntity(new Chicken(150, 320));
+		scene.addEntity(new Chicken(200, 320));
+		scene.addEntity(new Chicken(250, 320));
+		scene.addEntity(new Chicken(300, 320));
+		scene.addEntity(new Chicken(350, 320));
+		scene.addEntity(new Chicken(400, 300));
+		scene.addEntity(new Chicken(450, 300));
+		scene.addEntity(new ScrollControl());
 
 	}
 

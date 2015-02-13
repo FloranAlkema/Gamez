@@ -22,7 +22,7 @@ public class Player extends Entity {
 	public static int xx, yy, groundY;
 	public static double vvv;
 	public Rectangle playerNext = getBounds();
-	public static Rectangle start = new Rectangle(0, 0, 320, 5000);
+	
 	public static Rectangle poop = new Rectangle(-100, 0, 100, 5000);
 	public Player() {
 		sprite = Sprite.get("/player.png");
@@ -55,12 +55,12 @@ public class Player extends Entity {
 		} else {
 			collisionRight = false;
 		}
-		if (playerRect.intersects(start)) {
+		if (playerRect.intersects(Game.start)) {
 			startIntersect = true;
 			System.out.println("Start intersectxxxx");
 		} else {
 			startIntersect = false;
-			System.out.println("Startsectxxxx");
+			//System.out.println("Startsectxxxx");
 		}
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {

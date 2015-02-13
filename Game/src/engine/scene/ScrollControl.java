@@ -14,17 +14,24 @@ public class ScrollControl extends Entity {
 
 	public int getY() {
 		playerY = Game.scene.entities[0].getY();
+
 		return playerY;
 	}
 
 	public int getX() {
-		playerX = Game.scene.entities[0].getX();
+		if (Game.scene.entities[0] != null) {
+			playerX = Game.scene.entities[0].getX();
+
+		} else {
+			playerX = 500;
+		}
 		return playerX;
 	}
 
 	boolean characterDead() {
 		if (playerY > Game.HEIGHT) {
 			System.out.println("You are dead - good bye");
+			Game.reset();
 			return true;
 		} else {
 			return false;
@@ -45,12 +52,12 @@ public class ScrollControl extends Entity {
 	}
 
 	boolean shouldScrollLeftFast() {
-		return playerX < 256;
+		return playerX < 256 ;
 	}
 
 	public void scroll() {
 		if (shouldScrollLeftSlow() && !Player.startIntersect) {
-			Player.start.x += 2;
+			Game.start.x += 2;
 			for (Entity entity : Game.scene.entities) {
 				if (entity != null) {
 					entity.setX(2);
@@ -58,7 +65,7 @@ public class ScrollControl extends Entity {
 			}
 		}
 		if (shouldScrollRightSlow()) {
-			Player.start.x += -2;
+			Game.start.x += -2;
 			for (Entity entity : Game.scene.entities) {
 				if (entity != null) {
 					entity.setX(-2);
@@ -66,7 +73,7 @@ public class ScrollControl extends Entity {
 			}
 		}
 		if (shouldScrollLeftFast() && !Player.startIntersect) {
-			Player.start.x += 4;
+			Game.start.x += 4;
 			for (Entity entity : Game.scene.entities) {
 				if (entity != null) {
 					entity.setX(4);
@@ -74,7 +81,7 @@ public class ScrollControl extends Entity {
 			}
 		}
 		if (shouldScrollRightFast()) {
-			Player.start.x += -4;
+			Game.start.x += -4;
 			for (Entity entity : Game.scene.entities) {
 				if (entity != null) {
 					entity.setX(-4);
