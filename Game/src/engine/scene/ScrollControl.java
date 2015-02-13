@@ -6,14 +6,30 @@ import engine.scene.entity.Player;
 
 public class ScrollControl extends Entity {
 	int playerX;
+	int playerY;
 
 	public ScrollControl() {
 
 	}
 
+	public int getY() {
+		playerY = Game.scene.entities[0].getY();
+		return playerY;
+	}
+
 	public int getX() {
 		playerX = Game.scene.entities[0].getX();
 		return playerX;
+	}
+
+	boolean characterDead() {
+		if (playerY > Game.HEIGHT) {
+			System.out.println("You are dead - good bye");
+			return true;
+		} else {
+			return false;
+		}
+
 	}
 
 	boolean shouldScrollRightSlow() {
@@ -71,7 +87,9 @@ public class ScrollControl extends Entity {
 	@Override
 	public void update(Game game) {
 		getX();
+		getY();
 		scroll();
+		characterDead();
 	}
 
 	@Override
