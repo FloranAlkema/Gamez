@@ -41,18 +41,17 @@ public class Game extends JFrame implements Runnable {
 	public final Keyboard keyboard;
 	public final Mouse mouse;
 	public final Screen screen;
-	
 
-
-	//ImageIcon scoreIcon = new ImageIcon(
-	//		"/Game/src/ChickenScore.png");
-	//Image chicken = scoreIcon.getImage();
-	//Image chicken;
-	
+	// ImageIcon scoreIcon = new ImageIcon(
+	// "/Game/src/ChickenScore.png");
+	// Image chicken = scoreIcon.getImage();
+	// Image chicken;
 
 	// Game constructor
 	public Game() {
-	
+		
+		
+
 		setTitle("How to be a dEEEEM niggeR");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
@@ -82,7 +81,6 @@ public class Game extends JFrame implements Runnable {
 
 	public static void reset() {
 
-
 		start = null;
 		start = new Rectangle(0, 0, 320, 5000);
 		scene = null;
@@ -91,7 +89,7 @@ public class Game extends JFrame implements Runnable {
 			scene.entities[i] = null;
 
 		}
-
+		
 		scene.addEntity(new Player(0, 320));
 		scene.addEntity(new Ground(0, 500));
 		scene.addEntity(new Chicken(150, 320));
@@ -132,7 +130,8 @@ public class Game extends JFrame implements Runnable {
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
-		//g.drawImage(sprite, 0, 0, null);
+		// g.drawImage(sprite, 0, 0, null);
+		new Background(g);
 		g.drawImage(image, 0, 0, null);
 		g.drawImage(chicken, 1150, 40, null);
 		g.setColor(Color.WHITE);
