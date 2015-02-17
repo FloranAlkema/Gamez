@@ -8,12 +8,12 @@ public class GrassBlock extends Entity {
 
 	public GrassBlock() {
 		this(0, 0);
-		type = "GrassBlock";
+		type = "Ground";
 	}
 
 	public GrassBlock(int x, int y) {
 		this(x, y, "grass_block.png");
-		type = "GrassBlock";
+		type = "Ground";
 	}
 
 	public GrassBlock(int x, int y, String sprite) {
