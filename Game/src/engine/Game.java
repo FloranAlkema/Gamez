@@ -6,8 +6,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.Arrays;
 
 import javax.imageio.ImageIO;
@@ -52,6 +52,7 @@ public class Game extends JFrame implements Runnable {
 
 	// Game constructor
 	public Game() {
+	
 		setTitle("How to be a dEEEEM niggeR");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
@@ -80,7 +81,7 @@ public class Game extends JFrame implements Runnable {
 	}
 
 	public static void reset() {
-		
+
 
 		start = null;
 		start = new Rectangle(0, 0, 320, 5000);
@@ -131,6 +132,7 @@ public class Game extends JFrame implements Runnable {
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = screen.pixels[i];
 		}
+		//g.drawImage(sprite, 0, 0, null);
 		g.drawImage(image, 0, 0, null);
 		g.drawImage(chicken, 1150, 40, null);
 		g.setColor(Color.WHITE);
