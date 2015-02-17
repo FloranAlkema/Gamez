@@ -72,6 +72,10 @@ public class Player extends Entity {
 						Counter.score++;
 					}
 				}
+				if(entity.getType() == "Lava" && entity.getBounds().intersects(playerRect)){
+					//You die
+					Game.reset();
+				}
 				if (entity.getType() == "Ground") {
 					// System.out.println(entity);
 					Rectangle top = entity.getTop();
