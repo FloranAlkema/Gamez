@@ -2,7 +2,9 @@ package engine;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -41,6 +43,8 @@ public class Game extends JFrame implements Runnable {
 	public final Mouse mouse;
 	public final Screen screen;
 
+	Image background;
+
 	// ImageIcon scoreIcon = new ImageIcon(
 	// "/Game/src/ChickenScore.png");
 	// Image chicken = scoreIcon.getImage();
@@ -48,7 +52,7 @@ public class Game extends JFrame implements Runnable {
 
 	// Game constructor
 	public Game() {
-
+		background = Toolkit.getDefaultToolkit().getImage("C:/Users/Floran/git/Gamez/Game/src/Background2.png");
 		setTitle("How to be black");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
@@ -129,7 +133,7 @@ public class Game extends JFrame implements Runnable {
 			pixels[i] = screen.pixels[i];
 		}
 		// g.drawImage(sprite, 0, 0, null);
-		new Background(g); // background trials
+		g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
 		g.drawImage(image, 0, 0, null); // draw the screen/entities
 		g.drawImage(chicken, 1150, 40, null); // draw chicken score image -- not
 												// working
