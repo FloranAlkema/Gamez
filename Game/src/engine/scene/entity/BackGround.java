@@ -3,20 +3,20 @@ package engine.scene.entity;
 import engine.Game;
 import engine.graphics.Sprite;
 
-public class GrassBlock extends Entity {
+public class BackGround extends Entity {
 	private final Sprite sprite;
 
-	public GrassBlock() {
+	public BackGround() {
 		this(0, 0);
-		type = "Ground";
+		type = "BackGround";
 	}
 
-	public GrassBlock(int x, int y) {
-		this(x, y, "grass_block.png");
-		type = "Ground";
+	public BackGround(int x, int y) {
+		this(x, y, "Background2.png");
+		type = "BackGround";
 	}
 
-	public GrassBlock(int x, int y, String sprite) {
+	public BackGround(int x, int y, String sprite) {
 		this.sprite = Sprite.get("/" + sprite);
 		this.x = x;
 		this.y = y;
@@ -26,7 +26,7 @@ public class GrassBlock extends Entity {
 
 	@Override
 	public void update(final Game game) {
-
+		// checkCollisions();
 	}
 
 	@Override
