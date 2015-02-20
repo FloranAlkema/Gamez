@@ -52,7 +52,7 @@ public class Game extends JFrame implements Runnable {
 
 	// Game constructor
 	public Game() {
-		background = Toolkit.getDefaultToolkit().getImage("C:/Users/Floran/git/Gamez/Game/src/Background2.png");
+		background = Toolkit.getDefaultToolkit().getImage("C:Users/Floran/git/Gamez/Game/src/Background2.png");
 		setTitle("How to be black");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
