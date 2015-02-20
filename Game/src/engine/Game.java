@@ -19,6 +19,7 @@ import engine.input.Keyboard;
 import engine.input.Mouse;
 import engine.scene.Scene;
 import engine.scene.ScrollControl;
+import engine.scene.entity.BackGround;
 import engine.scene.entity.Chicken;
 import engine.scene.entity.GrassBlock;
 import engine.scene.entity.Ground;
@@ -43,8 +44,6 @@ public class Game extends JFrame implements Runnable {
 	public final Mouse mouse;
 	public final Screen screen;
 
-	Image background;
-
 	// ImageIcon scoreIcon = new ImageIcon(
 	// "/Game/src/ChickenScore.png");
 	// Image chicken = scoreIcon.getImage();
@@ -52,7 +51,6 @@ public class Game extends JFrame implements Runnable {
 
 	// Game constructor
 	public Game() {
-		background = Toolkit.getDefaultToolkit().getImage("C:Users/Floran/git/Gamez/Game/src/Background2.png");
 		setTitle("How to be black");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
@@ -91,6 +89,7 @@ public class Game extends JFrame implements Runnable {
 
 		}
 		// add all entities
+		scene.addEntity(new BackGround(0, 0));
 		scene.addEntity(new Player(0, 320));
 		scene.addEntity(new GrassBlock(0, 500));
 		scene.addEntity(new Lava(1200, 480));
@@ -110,7 +109,6 @@ public class Game extends JFrame implements Runnable {
 	 */
 	private void update() {
 		scene.update(this);
-
 		updates++;
 	}
 
@@ -133,7 +131,6 @@ public class Game extends JFrame implements Runnable {
 			pixels[i] = screen.pixels[i];
 		}
 		// g.drawImage(sprite, 0, 0, null);
-		g.drawImage(background, 0, 0, WIDTH, HEIGHT, null);
 		g.drawImage(image, 0, 0, null); // draw the screen/entities
 		g.drawImage(chicken, 1150, 40, null); // draw chicken score image -- not
 												// working
