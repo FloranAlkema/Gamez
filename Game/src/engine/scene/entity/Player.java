@@ -22,8 +22,9 @@ public class Player extends Entity {
 	public static int xx, yy, groundY;
 	public static double vvv;
 	public Rectangle playerNext = getBounds();
-	
+
 	public static Rectangle poop = new Rectangle(-100, 0, 100, 5000);
+
 	public Player() {
 		sprite = Sprite.get("/player.png");
 		width = sprite.width;
@@ -41,7 +42,7 @@ public class Player extends Entity {
 	}
 
 	public void checkCollisions() {
-		collision = !true;
+		collision = false;
 		Rectangle playerRect = getBounds();
 		Rectangle playerRectPlus = getBounds();
 		playerRectPlus.height += 1; // Bigger Player rectangle
@@ -50,17 +51,17 @@ public class Player extends Entity {
 		collisionLeft = false;
 		collisionRight = false;
 		collisionNext = false;
-		if(poop.intersects(playerRect)) {
+		if (poop.intersects(playerRect)) {
 			collisionRight = true;
 		} else {
 			collisionRight = false;
 		}
 		if (playerRect.intersects(Game.start)) {
 			startIntersect = true;
-			System.out.println("Start intersectxxxx");
+			// System.out.println("Start intersectxxxx");
 		} else {
 			startIntersect = false;
-			//System.out.println("Startsectxxxx");
+			// System.out.println("Startsectxxxx");
 		}
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {
@@ -72,8 +73,9 @@ public class Player extends Entity {
 						Counter.score++;
 					}
 				}
-				if(entity.getType() == "Lava" && entity.getBounds().intersects(playerRect)){
-					//You die
+				if (entity.getType() == "Lava"
+						&& entity.getBounds().intersects(playerRect)) {
+					// You die
 					Game.reset();
 				}
 				if (entity.getType() == "Ground") {
