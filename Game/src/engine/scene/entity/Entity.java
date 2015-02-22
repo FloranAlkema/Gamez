@@ -93,7 +93,7 @@ public abstract class Entity {
 		this.y += y;
 
 		final Rectangle bounds = getBounds();
-		for (final Entity entity : scene.entities)
+		for (final Entity entity : Scene.entities)
 			if (entity != null && entity != this
 					&& bounds.intersects(entity.getBounds()))
 				if (!onCollision(entity) || !entity.onCollision(this)) {

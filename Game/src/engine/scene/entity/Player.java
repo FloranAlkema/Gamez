@@ -198,8 +198,8 @@ public class Player extends Entity {
 	@Override
 	public void update(final Game game) {
 		checkCollisions();
-		gravity(game.scene);
-		move(game.scene);
+		gravity(Game.scene);
+		move(Game.scene);
 		// System.out.println(v);
 
 		// System.out.println(v);

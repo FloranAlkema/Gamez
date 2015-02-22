@@ -13,14 +13,14 @@ public class ScrollControl extends Entity {
 	}
 
 	public int getY() {
-		playerY = Game.scene.entities[0].getY();
+		playerY = Scene.entities[0].getY();
 
 		return playerY;
 	}
 
 	public int getX() {
-		if (Game.scene.entities[0] != null) {
-			playerX = Game.scene.entities[0].getX();
+		if (Scene.entities[0] != null) {
+			playerX = Scene.entities[0].getX();
 
 		} else {
 			playerX = 500;
@@ -52,13 +52,13 @@ public class ScrollControl extends Entity {
 	}
 
 	boolean shouldScrollLeftFast() {
-		return playerX < 256 ;
+		return playerX < 256;
 	}
 
 	public void scroll() {
 		if (shouldScrollLeftSlow() && !Player.startIntersect) {
 			Game.start.x += 2;
-			for (Entity entity : Game.scene.entities) {
+			for (Entity entity : Scene.entities) {
 				if (entity != null) {
 					entity.setX(2);
 				}
@@ -66,7 +66,7 @@ public class ScrollControl extends Entity {
 		}
 		if (shouldScrollRightSlow()) {
 			Game.start.x += -2;
-			for (Entity entity : Game.scene.entities) {
+			for (Entity entity : Scene.entities) {
 				if (entity != null) {
 					entity.setX(-2);
 				}
@@ -74,7 +74,7 @@ public class ScrollControl extends Entity {
 		}
 		if (shouldScrollLeftFast() && !Player.startIntersect) {
 			Game.start.x += 4;
-			for (Entity entity : Game.scene.entities) {
+			for (Entity entity : Scene.entities) {
 				if (entity != null) {
 					entity.setX(4);
 				}
@@ -82,7 +82,7 @@ public class ScrollControl extends Entity {
 		}
 		if (shouldScrollRightFast()) {
 			Game.start.x += -4;
-			for (Entity entity : Game.scene.entities) {
+			for (Entity entity : Scene.entities) {
 				if (entity != null) {
 					entity.setX(-4);
 				}

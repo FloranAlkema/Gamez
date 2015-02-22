@@ -4,12 +4,12 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.awt.Toolkit;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.Arrays;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
@@ -19,24 +19,23 @@ import engine.input.Keyboard;
 import engine.input.Mouse;
 import engine.scene.Scene;
 import engine.scene.ScrollControl;
-import engine.scene.entity.BackGround;
 import engine.scene.entity.Chicken;
 import engine.scene.entity.GrassBlock;
-import engine.scene.entity.Ground;
 import engine.scene.entity.Lava;
 import engine.scene.entity.Player;
 
 public class Game extends JFrame implements Runnable {
+
 	// Variables
+	private static final long serialVersionUID = 5143562850097544518L;
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
 	public static final int DIMENSION = WIDTH * HEIGHT;
 	public static Rectangle start = new Rectangle(0, 0, 320, 5000);
 	private boolean running;
 	private Thread thread;
-	private int updates, frames;
+	public int updates, frames;
 	public static Scene scene = null;
-	static BufferedImage chicken = null;
 	private final BufferedImage image;
 	private final int[] pixels;
 
@@ -44,10 +43,8 @@ public class Game extends JFrame implements Runnable {
 	public final Mouse mouse;
 	public final Screen screen;
 
-	// ImageIcon scoreIcon = new ImageIcon(
-	// "/Game/src/ChickenScore.png");
-	// Image chicken = scoreIcon.getImage();
-	// Image chicken;
+	ImageIcon scoreIcon = new ImageIcon("Gamez/Game/src/ChickenScore.png");
+	Image chicken = scoreIcon.getImage();
 
 	// Game constructor
 	public Game() {
@@ -84,12 +81,12 @@ public class Game extends JFrame implements Runnable {
 		scene = null;
 		scene = new Scene();
 
-		for (int i = 0; i < scene.entities.length; i++) { // Clear all entities
-			scene.entities[i] = null;
+		for (int i = 0; i < Scene.entities.length; i++) { // Clear all entities
+			Scene.entities[i] = null;
 
 		}
 		// add all entities
-		//scene.addEntity(new BackGround(0, 0));
+		// scene.addEntity(new BackGround(0, 0));
 		scene.addEntity(new Player(0, 320));
 		scene.addEntity(new GrassBlock(0, 500));
 		scene.addEntity(new Lava(1200, 480));
