@@ -12,7 +12,7 @@ public class Ground extends Entity {
 	}
 
 	public Ground(int x, int y) {
-		this(x, y, "grass_block.png");
+		this(x, y, "grass_single_tile.png");
 		type = "Ground";
 	}
 
