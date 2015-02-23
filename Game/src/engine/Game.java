@@ -20,6 +20,7 @@ import engine.input.Mouse;
 import engine.scene.Scene;
 import engine.scene.ScrollControl;
 import engine.scene.entity.Chicken;
+import engine.scene.entity.Cloud;
 import engine.scene.entity.Ground;
 import engine.scene.entity.Lava;
 import engine.scene.entity.Player;
@@ -97,7 +98,7 @@ public class Game extends JFrame implements Runnable {
 
 		}
 
-		scene.addEntity(new Player(0, 320));
+		scene.addEntity(new Player(3800, 320));
 		scene.addEntity(new Ground(-10, 625));
 		scene.addEntity(new Lava(780, 650));
 		scene.addEntity(new RedRectangle(855, 500));
@@ -119,6 +120,8 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Chicken(2310, 550));
 		scene.addEntity(new Ground(2500, 625));
 		scene.addEntity(new Water(3290, 650));
+		scene.addEntity(new Cloud(3290, 450));
+		scene.addEntity(new Ground(3680, 625));
 		scene.addEntity(new ScrollControl());
 
 	}
