@@ -33,14 +33,18 @@ public class Game extends JFrame implements Runnable {
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
 	public static final int DIMENSION = WIDTH * HEIGHT;
+	
 	public static Rectangle start = new Rectangle(0, 0, 320, 5000);
+	
+	public int updates, frames;
+	private final int[] pixels;
+	
 	private boolean running;
 	private Thread thread;
-	public int updates, frames;
+	
 	public static Scene scene = null;
 	private final BufferedImage image;
-	private final int[] pixels;
-
+	
 	public final Keyboard keyboard;
 	public final Mouse mouse;
 	public final Screen screen;
@@ -96,13 +100,19 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Chicken(150, 550));
 		scene.addEntity(new Chicken(930, 320));
 		scene.addEntity(new Chicken(1300, 400));
-		scene.addEntity(new RedBlock(1500, 625));
-		
-		
-		scene.addEntity(new Chicken(300, 320));
-		scene.addEntity(new Chicken(350, 320));
-		scene.addEntity(new Chicken(400, 300));
-		scene.addEntity(new Chicken(450, 300));
+		scene.addEntity(new RedBlock(1500, 520));
+		scene.addEntity(new RedBlock(1600, 420));
+		scene.addEntity(new RedBlock(1700, 320));
+		scene.addEntity(new RedBlock(1800, 220));
+		scene.addEntity(new RedBlock(1900, 120));
+		scene.addEntity(new RedBlock(2150, 120));
+		scene.addEntity(new Chicken(2170, 50));
+		scene.addEntity(new RedBlock(2400, 120));
+		scene.addEntity(new RedRectangle(2000, 600));
+		scene.addEntity(new Chicken(2060, 550));
+		scene.addEntity(new RedRectangle(2250, 600));
+		scene.addEntity(new Chicken(2310, 550));
+		scene.addEntity(new Ground(2500, 625));
 		scene.addEntity(new ScrollControl());
 
 	}
