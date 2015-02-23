@@ -23,6 +23,7 @@ import engine.scene.entity.Chicken;
 import engine.scene.entity.Ground;
 import engine.scene.entity.Lava;
 import engine.scene.entity.Player;
+import engine.scene.entity.RedRectangle;
 
 public class Game extends JFrame implements Runnable {
 
@@ -85,15 +86,15 @@ public class Game extends JFrame implements Runnable {
 			Scene.entities[i] = null;
 
 		}
-		// add all entities
-		// scene.addEntity(new BackGround(0, 0));
+		// add all entitiess
 		scene.addEntity(new Player(0, 320));
 		scene.addEntity(new Ground(-10, 625));
 		scene.addEntity(new Lava(780, 650));
+		scene.addEntity(new RedRectangle(855, 500));
 		scene.addEntity(new Ground(1150, 625 ));
 		scene.addEntity(new Chicken(150, 550));
 		scene.addEntity(new Chicken(930, 320));
-		scene.addEntity(new Chicken(250, 320));
+		scene.addEntity(new Chicken(1300, 400));
 		scene.addEntity(new Chicken(300, 320));
 		scene.addEntity(new Chicken(350, 320));
 		scene.addEntity(new Chicken(400, 300));
