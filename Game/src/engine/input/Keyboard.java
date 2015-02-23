@@ -7,8 +7,12 @@ import engine.scene.entity.Player;
 
 public class Keyboard implements KeyListener {
 	private final boolean[] down;
+
 	public boolean left = false;
 
+	/**
+	 * Constructor method
+	 */
 	public Keyboard() {
 		down = new boolean[256];
 	}
@@ -17,27 +21,30 @@ public class Keyboard implements KeyListener {
 		return down[code];
 	}
 
+	/**
+	 * Checks which keys are pressed
+	 */
 	@Override
 	public void keyPressed(final KeyEvent e) {
 		down[e.getKeyCode()] = true;
-		//System.out.println(e.getKeyCode());
+		// System.out.println(e.getKeyCode());
 		if (down[65]) {
 			Player.left(true);
-			//System.out.println("left");
+			// System.out.println("left");
 		}
 		if (down[32]) {
 			Player.up(true);
-			//System.out.println("up");
+			// System.out.println("up");
 		}
 		if (down[83]) {
 			Player.down(true);
-			//System.out.println("down");
+			// System.out.println("down");
 		}
 		if (down[68]) {
 			Player.right(true);
-			//System.out.println("right");
+			// System.out.println("right");
 		}
-		if (down[16]){
+		if (down[16]) {
 			Player.sprint(true);
 		}
 		if (down[27]) {
@@ -45,24 +52,27 @@ public class Keyboard implements KeyListener {
 		}
 	}
 
+	/**
+	 * Checks which keys are released
+	 */
 	@Override
 	public void keyReleased(final KeyEvent e) {
 		down[e.getKeyCode()] = false;
 		if (!down[65]) {
 			Player.left(false);
-			//System.out.println("not left");
-		} 
+			// System.out.println("not left");
+		}
 		if (!down[32]) {
 			Player.up(false);
-			//System.out.println("not up");
+			// System.out.println("not up");
 		}
 		if (!down[83]) {
 			Player.down(false);
-			//System.out.println("not down");
-		} 
+			// System.out.println("not down");
+		}
 		if (!down[68]) {
 			Player.right(false);
-			//System.out.println("not right");
+			// System.out.println("not right");
 		}
 		if (!down[16]) {
 			Player.sprint(false);
@@ -71,7 +81,6 @@ public class Keyboard implements KeyListener {
 
 	@Override
 	public void keyTyped(final KeyEvent e) {
-		// TODO Auto-generated method stub
 
 	}
 

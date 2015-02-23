@@ -5,13 +5,14 @@ import engine.scene.entity.Entity;
 
 public class Scene {
 	public static Entity[] entities = null;
-	
+
 	public Scene() {
 		entities = new Entity[1024];
 	}
-	
+
 	/**
-	 * This method finds the first null entity in the list and puts a given there
+	 * This method finds the first null entity in the list and puts a given
+	 * there
 	 * 
 	 * @param entity
 	 */
@@ -24,22 +25,26 @@ public class Scene {
 			}
 		}
 	}
-	
-	public void removeEntity(final Entity entity){
-		for(int i = 0; i < entities.length; i++){
-			if (entities[i] == entity){
+
+	/**
+	 * 
+	 * @param entity
+	 */
+	public void removeEntity(final Entity entity) {
+		for (int i = 0; i < entities.length; i++) {
+			if (entities[i] == entity) {
 				entities[i] = null;
 			}
 		}
 	}
-	
+
 	/**
 	 * This method updates all the entities
 	 * 
 	 * @param game
 	 */
 	public void update(final Game game) {
-		
+
 		for (int i = 0; i < entities.length; i++) {
 			final Entity entity = entities[i];
 			if (entity != null) {
@@ -51,7 +56,7 @@ public class Scene {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method renders all the entities
 	 * 

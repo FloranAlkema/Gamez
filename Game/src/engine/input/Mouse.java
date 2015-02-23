@@ -7,7 +7,7 @@ import java.awt.event.MouseListener;
  * Methods to be filled when needed
  */
 public class Mouse implements MouseListener {
-    
+
 	@Override
 	public void mouseClicked(final MouseEvent e) {
 	}

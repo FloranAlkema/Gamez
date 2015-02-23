@@ -26,7 +26,7 @@ public class Ground extends Entity {
 
 	@Override
 	public void update(final Game game) {
-		// checkCollisions();
+
 	}
 
 	@Override

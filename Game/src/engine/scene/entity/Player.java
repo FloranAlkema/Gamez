@@ -8,23 +8,31 @@ import engine.graphics.Sprite;
 import engine.scene.Scene;
 
 public class Player extends Entity {
+	// Variables
 	private final Sprite sprite;
-	static boolean left, right, down, up;
-	static boolean sprint;
-	public static boolean startIntersect;
+
+	public static int xx, yy, groundY;
 	int boost;
+
 	private double t = 0;
 	private double v = 0;
+
 	public static double vv;
+	public static double vvv;
 	private double a = 0.05d;
+
 	public static boolean collisionTop, collisionRight, collisionLeft,
 			collisionNext, closeToGround;
-	public static int xx, yy, groundY;
-	public static double vvv;
-	public Rectangle playerNext = getBounds();
+	public static boolean startIntersect;
+	static boolean left, right, down, up;
+	static boolean sprint;
 
 	public static Rectangle poop = new Rectangle(-100, 0, 100, 5000);
+	public Rectangle playerNext = getBounds();
 
+	/**
+	 * Constructor Method
+	 */
 	public Player() {
 		sprite = Sprite.get("/player.png");
 		width = sprite.width;
@@ -41,6 +49,9 @@ public class Player extends Entity {
 		type = "Player";
 	}
 
+	/**
+	 * Checks collisions between Player and all objects
+	 */
 	public void checkCollisions() {
 		collision = false;
 		Rectangle playerRect = getBounds();
@@ -58,10 +69,8 @@ public class Player extends Entity {
 		}
 		if (playerRect.intersects(Game.start)) {
 			startIntersect = true;
-			// System.out.println("Start intersectxxxx");
 		} else {
 			startIntersect = false;
-			// System.out.println("Startsectxxxx");
 		}
 		for (Entity entity : Scene.entities) {
 			if (entity != null) {

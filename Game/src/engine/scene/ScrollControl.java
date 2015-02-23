@@ -5,23 +5,25 @@ import engine.scene.entity.Entity;
 import engine.scene.entity.Player;
 
 public class ScrollControl extends Entity {
+	// Variables
 	int playerX;
 	int playerY;
 
+	/**
+	 * Constructor Method
+	 */
 	public ScrollControl() {
 
 	}
 
 	public int getY() {
 		playerY = Scene.entities[0].getY();
-
 		return playerY;
 	}
 
 	public int getX() {
 		if (Scene.entities[0] != null) {
 			playerX = Scene.entities[0].getX();
-
 		} else {
 			playerX = 500;
 		}
@@ -101,7 +103,6 @@ public class ScrollControl extends Entity {
 
 	@Override
 	public void render(Game game) {
-		// TODO Auto-generated method stub
 
 	}
 }

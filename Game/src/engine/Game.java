@@ -33,18 +33,18 @@ public class Game extends JFrame implements Runnable {
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
 	public static final int DIMENSION = WIDTH * HEIGHT;
-	
+
 	public static Rectangle start = new Rectangle(0, 0, 320, 5000);
-	
+
 	public int updates, frames;
 	private final int[] pixels;
-	
+
 	private boolean running;
 	private Thread thread;
-	
+
 	public static Scene scene = null;
 	private final BufferedImage image;
-	
+
 	public final Keyboard keyboard;
 	public final Mouse mouse;
 	public final Screen screen;
@@ -52,12 +52,13 @@ public class Game extends JFrame implements Runnable {
 	ImageIcon scoreIcon = new ImageIcon("Gamez/Game/src/ChickenScore.png");
 	Image chicken = scoreIcon.getImage();
 
-	// Game constructor
+	/**
+	 * Constructor Method
+	 */
 	public Game() {
 		setTitle("How to be black");
 		setSize(WIDTH, HEIGHT);
 		setResizable(false);
-
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,22 +82,25 @@ public class Game extends JFrame implements Runnable {
 
 	}
 
-	public static void reset() {// on game start & death
-		Counter.score = 0; // reset chicken score
-		start = new Rectangle(0, 0, 320, 5000); // reset start rectangle
+	/**
+	 * This method deletes and adds the entities whenever the player is dead.
+	 */
+	public static void reset() {
+		Counter.score = 0;
+		start = new Rectangle(0, 0, 320, 5000);
 		scene = null;
 		scene = new Scene();
 
-		for (int i = 0; i < Scene.entities.length; i++) { // Clear all entities
+		for (int i = 0; i < Scene.entities.length; i++) {
 			Scene.entities[i] = null;
 
 		}
-		// add all entities
+
 		scene.addEntity(new Player(0, 320));
 		scene.addEntity(new Ground(-10, 625));
 		scene.addEntity(new Lava(780, 650));
 		scene.addEntity(new RedRectangle(855, 500));
-		scene.addEntity(new Ground(1150, 625 ));
+		scene.addEntity(new Ground(1150, 625));
 		scene.addEntity(new Chicken(150, 550));
 		scene.addEntity(new Chicken(930, 320));
 		scene.addEntity(new Chicken(1300, 400));

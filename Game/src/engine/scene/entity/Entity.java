@@ -86,6 +86,14 @@ public abstract class Entity {
 		return false;
 	}
 
+	/**
+	 * This method is called to move the player
+	 * 
+	 * @param scene
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	protected boolean move(final Scene scene, final int x, final int y) {
 		final int xx = this.x;
 		final int yy = this.y;
