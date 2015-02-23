@@ -209,9 +209,7 @@ public class Player extends Entity {
 		checkCollisions();
 		gravity(Game.scene);
 		move(Game.scene);
-		// System.out.println(v);
-
-		// System.out.println(v);
+	
 		yy = y;
 		xx = x;
 		vvv = v;

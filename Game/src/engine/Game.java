@@ -25,6 +25,7 @@ import engine.scene.entity.Lava;
 import engine.scene.entity.Player;
 import engine.scene.entity.RedBlock;
 import engine.scene.entity.RedRectangle;
+import engine.scene.entity.Water;
 
 public class Game extends JFrame implements Runnable {
 
@@ -117,6 +118,7 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new RedRectangle(2250, 600));
 		scene.addEntity(new Chicken(2310, 550));
 		scene.addEntity(new Ground(2500, 625));
+		scene.addEntity(new Water(3290, 650));
 		scene.addEntity(new ScrollControl());
 
 	}
