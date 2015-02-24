@@ -24,6 +24,10 @@ public class Cloud extends Entity {
 		width = this.sprite.width;
 		height = this.sprite.height;
 	}
+	
+	public void moveCloud() {
+		
+	}
 
 	@Override
 	public void update(final Game game) {
