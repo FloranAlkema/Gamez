@@ -50,9 +50,8 @@ public class Game extends JFrame implements Runnable {
 	public final Keyboard keyboard;
 	public final Mouse mouse;
 	public final Screen screen;
-
-	ImageIcon scoreIcon = new ImageIcon("Gamez/Game/src/ChickenScore.png");
-	Image chicken = scoreIcon.getImage();
+	Image chicken; 
+	
 
 	/**
 	 * Constructor Method
@@ -71,6 +70,11 @@ public class Game extends JFrame implements Runnable {
 		pixels = ((DataBufferInt) image.getRaster().getDataBuffer()).getData();
 		screen = new Screen();
 		reset();
+		try {
+			ImageIcon scoreIcon = new ImageIcon("ChickenScore.png");
+			chicken = scoreIcon.getImage();
+			} catch(Exception e)
+			{e.printStackTrace();}
 		setVisible(true);
 	}
 
@@ -120,7 +124,7 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Chicken(2310, 550));
 		scene.addEntity(new Ground(2500, 625));
 		scene.addEntity(new Water(3290, 650));
-		scene.addEntity(new Cloud(3290, 450));
+		scene.addEntity(new Cloud(3290, 550, 200, 0));
 		scene.addEntity(new Ground(3680, 625));
 		scene.addEntity(new ScrollControl());
 
@@ -154,7 +158,7 @@ public class Game extends JFrame implements Runnable {
 		}
 		// g.drawImage(sprite, 0, 0, null);
 		g.drawImage(image, 0, 0, null); // draw the screen/entities
-		g.drawImage(chicken, 1150, 40, null); // draw chicken score image -- not
+		g.drawImage(chicken, 500, 300, null); // draw chicken score image -- not
 												// working
 		g.setColor(Color.WHITE);
 		g.drawString("speed: " + Player.vvv, 50, 110); // draw player speed
