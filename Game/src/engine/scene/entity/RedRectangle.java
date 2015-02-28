@@ -13,7 +13,7 @@ public class RedRectangle extends Entity {
 
 	public RedRectangle(int x, int y) {
 		this(x, y, "redtangle.png");
-		type = "Ground";
+		
 	}
 
 	public RedRectangle(int x, int y, String sprite) {
@@ -22,6 +22,7 @@ public class RedRectangle extends Entity {
 		this.y = y;
 		width = this.sprite.width;
 		height = this.sprite.height;
+		type = "Ground";
 	}
 
 	@Override

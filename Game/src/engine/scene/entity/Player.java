@@ -37,7 +37,7 @@ public class Player extends Entity {
 		sprite = Sprite.get("/player.png");
 		width = sprite.width;
 		height = sprite.height;
-		type = "Player";
+		
 	}
 
 	public Player(int x, int y) {
@@ -167,7 +167,7 @@ public class Player extends Entity {
 		}
 		if (sprint && collisionNext && boost == 0) {
 			boost = 3;
-		} else if (sprint && !collisionNext && boost == 3) {
+		} else if (sprint && boost == 3) {
 			boost = 3;
 		} else {
 			boost = 0;

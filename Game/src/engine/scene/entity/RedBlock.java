@@ -13,7 +13,7 @@ public class RedBlock extends Entity {
 
 	public RedBlock(int x, int y) {
 		this(x, y, "redblock.png");
-		type = "Ground";
+		
 	}
 
 	public RedBlock(int x, int y, String sprite) {
@@ -22,6 +22,7 @@ public class RedBlock extends Entity {
 		this.y = y;
 		width = this.sprite.width;
 		height = this.sprite.height;
+		type = "Ground";
 	}
 
 	@Override

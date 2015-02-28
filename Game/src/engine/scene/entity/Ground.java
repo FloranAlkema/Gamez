@@ -8,7 +8,7 @@ public class Ground extends Entity {
 
 	public Ground() {
 		this(0, 0);
-		type = "Ground";
+		
 	}
 
 	public Ground(int x, int y) {
@@ -22,6 +22,7 @@ public class Ground extends Entity {
 		this.y = y;
 		width = this.sprite.width;
 		height = this.sprite.height;
+		type = "Ground";
 	}
 
 	@Override

@@ -6,18 +6,18 @@ import engine.graphics.Sprite;
 public class Cloud extends Entity {
 
 	private final Sprite sprite;
-	int myX = 0, myY = 0, dX, dY;
-	boolean goingRight, goingUp;
+	int myX = 0, myY = 0, dX, dY;							// Bijhouden van locatie in beweging en verplaatsing afstand
+	boolean goingRight = true, goingUp = true;				// Status van beweging
+	
 	public Cloud() {
 		this(0, 0);
-		type = "Ground";
 	}
 
 	public Cloud(int x, int y) {
-		this(x, y, 0, 0);
+		this(x, y, 0, 0);						//geen verplaatsing
 
 	}
-	public Cloud(int x, int y, int dX, int dY){
+	public Cloud(int x, int y, int dX, int dY){	//input verplaatsing
 		this(x, y, dX, dY, "Cloud.png");
 	}
 
@@ -34,14 +34,25 @@ public class Cloud extends Entity {
 	
 	
 	public void moveCloud() {
-		if(goingRight && myX < dX){
-			myX++; x++;
-		}else if(goingRight && myX == dX){
-			goingRight = false;
-		}else if(!goingRight && myX > 0){
-			myX--; x--;
-		}else if(!goingRight && myX == 0){
-			goingRight = true;
+
+		if(goingRight && myX < dX){				//
+			myX++; x++;							//
+		}else if(goingRight && myX == dX){		//	
+			goingRight = false;					// Verplaatsing in X richting met lengte dX vanaf spawnpunt
+		}else if(!goingRight && myX > 0){		//
+			myX--; x--;							//
+		}else if(!goingRight && myX == 0){		//	
+			goingRight = true;					//
+		}
+		
+		if(goingUp && myY < dY){				//
+			myY++; y++;							//
+		}else if(goingUp && myY == dY){			//	
+			goingUp = false;					// Verplaatsing in Y richting met hoogte dY vanaf spawnpunt
+		}else if(!goingUp && myY > 0){			//
+			myY--; y--;							//
+		}else if(!goingUp && myY == 0){			//	
+			goingUp = true;						//
 		}
 	}
 

@@ -13,7 +13,7 @@ public class Lava extends Entity {
 
 	public Lava(int x, int y) {
 		this(x, y, "lava.png");
-		type = "Lava";
+		
 	}
 
 	public Lava(int x, int y, String sprite) {
@@ -22,6 +22,7 @@ public class Lava extends Entity {
 		this.y = y;
 		width = this.sprite.width;
 		height = this.sprite.height;
+		type = "Lava";
 	}
 
 	@Override

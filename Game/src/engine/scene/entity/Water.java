@@ -13,7 +13,7 @@ public class Water extends Entity {
 
 	public Water(int x, int y) {
 		this(x, y, "water.png");
-		type = "Water";
+		
 	}
 
 	public Water(int x, int y, String sprite) {
@@ -22,6 +22,7 @@ public class Water extends Entity {
 		this.y = y;
 		width = this.sprite.width;
 		height = this.sprite.height;
+		type = "Water";
 	}
 
 	@Override
