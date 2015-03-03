@@ -105,6 +105,8 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Player(0, 320));
 		scene.addEntity(new Ground(-10, 625));
 		scene.addEntity(new Lava(780, 650));
+		scene.addEntity(new Chicken(600, 350));
+		scene.addEntity(new Chicken(1640, 540));
 		scene.addEntity(new RedRectangle(855, 500));
 		scene.addEntity(new Ground(1150, 625));
 		scene.addEntity(new Chicken(150, 550));
@@ -122,10 +124,12 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Chicken(2060, 550));
 		scene.addEntity(new RedRectangle(2250, 600));
 		scene.addEntity(new Chicken(2310, 550));
+		scene.addEntity(new Chicken(2700, 370));
 		scene.addEntity(new Ground(2500, 625));
 		scene.addEntity(new Water(3290, 650));
-		scene.addEntity(new Cloud(3290, 550, 200, 0));
+		scene.addEntity(new Cloud(3290, 500, 200, 0));
 		scene.addEntity(new Ground(3680, 625));
+		//scene.addEntity(new Cloud(300, 550, 0, 200));
 		scene.addEntity(new ScrollControl());
 
 	}

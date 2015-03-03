@@ -52,11 +52,11 @@ public class Cloud extends Entity {
 		}
 		
 		if(goingUp && myY < dY){				//
-			myY++; y++;							//
+			myY++; y++;	//Player.y++;				//
 		}else if(goingUp && myY == dY){			//	
 			goingUp = false;					// Verplaatsing in Y richting met hoogte dY vanaf spawnpunt
 		}else if(!goingUp && myY > 0){			//
-			myY--; y--;							//
+			myY--; y--;	//Player.y--;				//
 		}else if(!goingUp && myY == 0){			//	
 			goingUp = true;						//
 		}
