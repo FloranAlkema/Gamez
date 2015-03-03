@@ -34,14 +34,14 @@ public class Player extends Entity {
 	 * Constructor Method
 	 */
 	public Player() {
-		sprite = Sprite.get("/player.png");
+		sprite = Sprite.get("/player_idle.png");
 		width = sprite.width;
 		height = sprite.height;
 		
 	}
 
 	public Player(int x, int y) {
-		sprite = Sprite.get("/player.png");
+		sprite = Sprite.get("/player_idle.png");
 		width = sprite.width;
 		height = sprite.height;
 		this.x = x;
