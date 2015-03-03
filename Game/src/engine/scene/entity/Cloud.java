@@ -31,6 +31,12 @@ public class Cloud extends Entity {
 		height = this.sprite.height;
 		type = "Ground";
 	}
+	public boolean playerOn(){
+		if(this.getBounds().intersects(Player.playerRectPlus)){
+			return true;
+		}	else	{
+			return false;}
+	}
 	
 	
 	public void moveCloud() {

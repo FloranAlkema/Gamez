@@ -26,8 +26,8 @@ public class Player extends Entity {
 	public static boolean startIntersect;
 	static boolean left, right, down, up;
 	static boolean sprint;
-
-	public static Rectangle poop = new Rectangle(-100, 0, 100, 5000);
+	public static Rectangle playerRectPlus;
+	public static Rectangle startArea = new Rectangle(-100, 0, 100, 5000);
 	public Rectangle playerNext = getBounds();
 
 	/**
@@ -55,14 +55,14 @@ public class Player extends Entity {
 	public void checkCollisions() {
 		collision = false;
 		Rectangle playerRect = getBounds();
-		Rectangle playerRectPlus = getBounds();
+		playerRectPlus = getBounds();
 		playerRectPlus.height += 1; // Bigger Player rectangle
 		playerNext.x = 0;
 		collisionTop = false;
 		collisionLeft = false;
 		collisionRight = false;
 		collisionNext = false;
-		if (poop.intersects(playerRect)) {
+		if (startArea.intersects(playerRect)) {
 			collisionRight = true;
 		} else {
 			collisionRight = false;
