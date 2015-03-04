@@ -1,6 +1,7 @@
 package engine;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
@@ -50,8 +51,7 @@ public class Game extends JFrame implements Runnable {
 	public final Keyboard keyboard;
 	public final Mouse mouse;
 	public final Screen screen;
-	Image chicken; 
-	
+	Image chicken;
 
 	/**
 	 * Constructor Method
@@ -73,9 +73,11 @@ public class Game extends JFrame implements Runnable {
 		try {
 			ImageIcon scoreIcon = new ImageIcon("ChickenScore.png");
 			chicken = scoreIcon.getImage();
-			} catch(Exception e)
-			{e.printStackTrace();}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		setVisible(true);
+
 	}
 
 	/**
@@ -129,7 +131,7 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Water(3290, 650));
 		scene.addEntity(new Cloud(3290, 500, 200, 0));
 		scene.addEntity(new Ground(3680, 625));
-		//scene.addEntity(new Cloud(300, 550, 0, 200));
+		scene.addEntity(new Chicken(4400, 450));
 		scene.addEntity(new ScrollControl());
 
 	}
@@ -140,6 +142,7 @@ public class Game extends JFrame implements Runnable {
 	private void update() {
 		scene.update(this);
 		updates++;
+
 	}
 
 	/**
@@ -164,12 +167,26 @@ public class Game extends JFrame implements Runnable {
 		g.drawImage(image, 0, 0, null); // draw the screen/entities
 		g.drawImage(chicken, 500, 300, null); // draw chicken score image -- not
 												// working
+
 		g.setColor(Color.WHITE);
 		g.drawString("speed: " + Player.vvv, 50, 110); // draw player speed
 		g.drawString("X: " + Player.xx, 50, 120); // draw player x
 		g.drawString("Y: " + Player.yy, 50, 130); // draw player y
 		// g.drawString("FPS: " + updates, 50, 140);
-		g.drawString("= " + Counter.score, 1210, 80); // draw chicken score text
+		g.drawString("= " + Counter.score, 1210, 80); // draw chicken score
+														// text
+
+		if (Counter.score == 10) {
+			Font yolo = new Font("Serif", Font.BOLD, 20);
+			g.setColor(Color.WHITE);
+			g.setFont(yolo);
+			g.drawString(
+					"Thank you for playing How To Be Black - Have a nice day! :-)",
+					Game.WIDTH / 2, Game.HEIGHT / 2);
+			g.drawString("Press ESC to close the Game", Game.WIDTH / 2,
+					Game.HEIGHT / 2 + 100);
+		}
+
 		g.dispose();
 		buffer.show();
 

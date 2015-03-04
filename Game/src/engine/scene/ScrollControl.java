@@ -99,6 +99,7 @@ public class ScrollControl extends Entity {
 		getY();
 		scroll();
 		characterDead();
+
 	}
 
 	@Override
