@@ -9,7 +9,7 @@ import engine.scene.Scene;
 
 public class Player extends Entity {
 	// Variables
-	private final Sprite sprite;
+	private Sprite sprite;
 
 	public static int xx, yy, groundY;
 	int boost;
@@ -29,19 +29,20 @@ public class Player extends Entity {
 	public static Rectangle playerRectPlus;
 	public static Rectangle startArea = new Rectangle(-100, 0, 100, 5000);
 	public Rectangle playerNext = getBounds();
+	public String PlayerImage = "/player_idle.png";
 
 	/**
 	 * Constructor Method
 	 */
 	public Player() {
-		sprite = Sprite.get("/player_idle.png");
+		sprite = Sprite.get(PlayerImage);
 		width = sprite.width;
 		height = sprite.height;
-		
+		//"/player_sprint.png"
 	}
 
 	public Player(int x, int y) {
-		sprite = Sprite.get("/player_idle.png");
+		sprite = Sprite.get(PlayerImage);
 		width = sprite.width;
 		height = sprite.height;
 		this.x = x;
@@ -148,14 +149,18 @@ public class Player extends Entity {
 	}
 
 	public void move(final Scene scene) {
+		PlayerImage = "/player_idle.png";
 		if (left && right) {
 			// stand still
+			PlayerImage = "/player_idle.png";
 		} else if (right && !collisionLeft) {
 			x = x + 1 + boost;
 			move(scene, 1 + boost, 0);
+			PlayerImage = "/player_run.png";
 		} else if (left && !collisionRight) {
 			x = x - 1 - boost;
 			move(scene, -1 - boost, 0);
+			PlayerImage = "/player_run.png";
 		}
 		if (down) {
 			// y++;
@@ -163,12 +168,15 @@ public class Player extends Entity {
 		if (up) {
 			if (collisionTop) {
 				y--;
+				PlayerImage = "/player_jump.png";
 			}
 		}
 		if (sprint && collisionNext && boost == 0) {
 			boost = 3;
+			PlayerImage = "/player_sprint.png";
 		} else if (sprint && boost == 3) {
 			boost = 3;
+			PlayerImage = "/player_sprint.png";
 		} else {
 			boost = 0;
 		}
@@ -213,6 +221,7 @@ public class Player extends Entity {
 		yy = y;
 		xx = x;
 		vvv = v;
+		sprite = Sprite.get(PlayerImage);
 	}
 
 	@Override

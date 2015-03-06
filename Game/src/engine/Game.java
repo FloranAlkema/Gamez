@@ -21,6 +21,7 @@ import engine.input.Mouse;
 import engine.scene.Scene;
 import engine.scene.ScrollControl;
 import engine.scene.entity.Chicken;
+import engine.scene.entity.ChickenScore;
 import engine.scene.entity.Cloud;
 import engine.scene.entity.Ground;
 import engine.scene.entity.Lava;
@@ -93,6 +94,16 @@ public class Game extends JFrame implements Runnable {
 	/**
 	 * This method deletes and adds the entities whenever the player is dead.
 	 */
+	public static void endGame() {
+		scene = null;
+		scene = new Scene();
+
+		for (int i = 0; i < Scene.entities.length; i++) {
+			Scene.entities[i] = null;
+		}
+		scene.addEntity(new ChickenScore(1050, 40));
+	}
+
 	public static void reset() {
 		Counter.score = 0;
 		start = new Rectangle(0, 0, 320, 5000);
@@ -105,6 +116,7 @@ public class Game extends JFrame implements Runnable {
 		}
 
 		scene.addEntity(new Player(0, 320));
+		scene.addEntity(new ChickenScore(1050, 40));
 		scene.addEntity(new Ground(-10, 625));
 		scene.addEntity(new Lava(780, 650));
 		scene.addEntity(new Chicken(600, 350));
@@ -133,7 +145,7 @@ public class Game extends JFrame implements Runnable {
 		scene.addEntity(new Ground(3680, 625));
 		scene.addEntity(new Chicken(4400, 450));
 		scene.addEntity(new ScrollControl());
-
+		Counter.deaths++;
 	}
 
 	/**
@@ -169,28 +181,35 @@ public class Game extends JFrame implements Runnable {
 												// working
 
 		g.setColor(Color.WHITE);
-		g.drawString("speed: " + Player.vvv, 50, 110); // draw player speed
-		g.drawString("X: " + Player.xx, 50, 120); // draw player x
-		g.drawString("Y: " + Player.yy, 50, 130); // draw player y
-		// g.drawString("FPS: " + updates, 50, 140);
-		g.drawString("= " + Counter.score, 1210, 80); // draw chicken score
-														// text
-
-		if (Counter.score == 10) {
-			Font yolo = new Font("Serif", Font.BOLD, 20);
-			g.setColor(Color.WHITE);
-			g.setFont(yolo);
-			g.drawString(
-					"Thank you for playing How To Be Black - Have a nice day! :-)",
-					Game.WIDTH / 2, Game.HEIGHT / 2);
-			g.drawString("Press ESC to close the Game", Game.WIDTH / 2,
-					Game.HEIGHT / 2 + 100);
-		}
-
+		Font font = new Font("Calibri", Font.BOLD, 50);
+		g.setFont(font);
+		g.drawString("= " + Counter.score, 1150, 80); // draw chicken score
+		win(g); // win check method
 		g.dispose();
 		buffer.show();
 
 		frames++;
+	}
+
+	public void win(Graphics g) {
+		if (Counter.score == 10) {
+			Font font2 = new Font("Calibri", Font.BOLD, 20);
+			g.setColor(Color.WHITE);
+			g.setFont(font2);
+			g.drawString(
+					"Thank you for playing How To Be Black - Have a nice day! :-)",
+					Game.WIDTH / 3, Game.HEIGHT / 2);
+			g.drawString("Press ESC to close the Game", Game.WIDTH / 3,
+					Game.HEIGHT / 2 + 300);
+			if (Counter.deaths == 1) {
+				g.drawString("You died 1 time!", Game.WIDTH / 3,
+						Game.HEIGHT / 2 + 100);
+			} else {
+				g.drawString("You died " + Counter.deaths + " times!",
+						Game.WIDTH / 3, Game.HEIGHT / 2 + 100);
+			}
+			endGame();
+		}
 	}
 
 	/**

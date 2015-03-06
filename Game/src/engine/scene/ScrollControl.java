@@ -62,7 +62,9 @@ public class ScrollControl extends Entity {
 			Game.start.x += 2;
 			for (Entity entity : Scene.entities) {
 				if (entity != null) {
+					if (entity.getType() != "ChickenScore") {
 					entity.setX(2);
+					}
 				}
 			}
 		}
@@ -70,7 +72,9 @@ public class ScrollControl extends Entity {
 			Game.start.x += -2;
 			for (Entity entity : Scene.entities) {
 				if (entity != null) {
+					if (entity.getType() != "ChickenScore") {
 					entity.setX(-2);
+					}
 				}
 			}
 		}
@@ -78,7 +82,9 @@ public class ScrollControl extends Entity {
 			Game.start.x += 4;
 			for (Entity entity : Scene.entities) {
 				if (entity != null) {
+					if (entity.getType() != "ChickenScore") {
 					entity.setX(4);
+					}
 				}
 			}
 		}
@@ -86,7 +92,9 @@ public class ScrollControl extends Entity {
 			Game.start.x += -4;
 			for (Entity entity : Scene.entities) {
 				if (entity != null) {
-					entity.setX(-4);
+					if (entity.getType() != "ChickenScore") {
+						entity.setX(-4);
+					}
 				}
 			}
 		}

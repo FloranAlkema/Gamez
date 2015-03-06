@@ -3,6 +3,7 @@ package engine.input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import engine.Game;
 import engine.scene.entity.Player;
 
 public class Keyboard implements KeyListener {
